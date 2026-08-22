@@ -1,6 +1,5 @@
 ![ColorTool logo](src/assets/ColorTool_logo.png "ColorTool logo")
-# This is the Vite (React, JS/JSX) based frontend project which<br>
-corresponds to the "api-file-color" project (API Python backend).
+# This is the Vite (React, JS/JSX) based frontend project which corresponds to the "api-file-color" project (API Python backend).
 
 ## React + Vite
 
