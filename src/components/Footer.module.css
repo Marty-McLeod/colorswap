@@ -1,0 +1,14 @@
+.footer {
+    display: flex;
+    padding: 0.6rem;
+    
+    background-color: slateblue;
+    
+    color: whitesmoke;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    justify-content: center;
+    align-items: center;
+
+
+}

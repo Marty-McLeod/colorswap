@@ -1,5 +1,49 @@
 .nav {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: #ececec;
+  padding: 0 2em;
+  border-bottom: 1px solid rgb(135, 135, 135);
+
+  ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+
+  }
+
+  .menu {
+      display: none;
+    }
+  
+}
+
+
+
+/* .nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+
+} */
+
+.nav a:link,a:visited {
+  text-decoration: none;
+  font-size: 1.6rem;
+  color: slategray;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.nav a:hover {
+  background-color: lightgray;
+  color: black;
+}
+
+/* .nav {
+  display: flex;
   align-items: center;
   justify-content: space-between;
 }
@@ -18,10 +62,11 @@
   text-transform: uppercase;
   font-size: 1.5rem;
   font-weight: 600;
-}
+} */
 
 /* CSS Modules feature */
-.nav a:global(.active) {
+
+/* .nav a:global(.active) {
   color: var(--color-brand--2);
 }
 
@@ -31,4 +76,4 @@ a.ctaLink:visited {
   color: var(--color-dark--0);
   padding: 0.8rem 2rem;
   border-radius: 7px;
-}
+} */

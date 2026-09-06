@@ -1,14 +1,18 @@
 import styles from "./Homepage.module.css";
 import PageNav from "../components/PageNav";
+import Footer from "../components/Footer";
 
 function Homepage() {
     return (
-        <section>
+        <>
             <PageNav/>
             <main className={styles.homepage}>
-                Homepage 🚀
+                <section>
+                    Homepage 🚀
+                </section>            
             </main>
-        </section>
+            <Footer/>
+        </>
     )
 }
 

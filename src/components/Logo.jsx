@@ -6,7 +6,7 @@ function Logo() {
     return (
         <div>
             <Link to="/">
-            <img src="src/assets/color-tool-logo.png" alt="ColorTool logo" className={styles.logo}/>
+            <img src="src/assets/colorswap-logo.png" alt="ColorSwap logo" className={styles.logo}/>
             </Link>
         </div>
     )

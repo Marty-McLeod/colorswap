@@ -1,0 +1,12 @@
+/* Removes the small gap around the <body>,
+    allowing 100% elements across the viewport.
+
+    The non-zero margin (8px in the case of Microsoft Edge) 
+    is a user agent styleshee default setting.
+*/
+
+body {
+    margin: 0;
+    /* padding: 0;
+    box-sizing: border-box; */
+} 
