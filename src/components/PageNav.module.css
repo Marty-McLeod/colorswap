@@ -1,27 +1,102 @@
+/* Navbar and related color palette */
+.palette {
+  color: #EDEDE9;
+  color: #D6CCC2;
+  color: #F5EBE0;
+  color: #E3D5CA;
+  color: #D5BDAF;
+}
+
 .nav {
   display: flex;
   flex-direction: row;
+  height: 3rem;
+  
   justify-content: space-between;
   align-items: center;
 
-  background-color: #ececec;
+  background-color: #EDEDE9;
   padding: 0 2em;
-  border-bottom: 1px solid rgb(135, 135, 135);
+  border-bottom: 1px solid #D6CCC2;
 
   ul {
     display: flex;
+    flex-direction: row;
     list-style: none;
     gap: 1rem;
 
   }
 
+      svg {
+      height: 2rem;
+      width: 2rem;
+    }  
+
   .menu {
       display: none;
+      /* font-size: 2rem; */
+    
+      color: darkgray;
     }
+
+
+    .menuUnused {
+      display: none;
+       /* font-size: 2rem; */  
+      color: darkgray;
+  }
   
 }
 
 
+@media (max-width: 768px) {
+
+  .nav {
+    padding: 0 1em;
+
+
+    ul {
+      display: none;
+      /* position: absolute;
+      top: 2.6rem;
+
+      display: flex;
+      flex-direction: column;
+      align-items: start; */
+
+
+      background-color: #E3D5CA;
+    }
+
+    .menu {
+      display: block;
+      background-color:green;
+
+    }
+
+    .menuUnused {
+        display: block;
+      background-color: green;       
+        /* visibility: hidden; */
+    }
+
+
+
+
+  }
+
+    .menuGroup {
+      display: flex;
+      width: auto;
+
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      background-color: orange;
+    }
+
+}
 
 /* .nav ul {
   display: flex;

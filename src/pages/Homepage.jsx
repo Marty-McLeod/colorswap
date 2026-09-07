@@ -1,6 +1,8 @@
 import styles from "./Homepage.module.css";
 import PageNav from "../components/PageNav";
 import Footer from "../components/Footer";
+import { HiFaceSmile, HiRocketLaunch } from "react-icons/hi2";
+import { HiFlag } from "react-icons/hi";
 
 function Homepage() {
     return (
@@ -8,7 +10,8 @@ function Homepage() {
             <PageNav/>
             <main className={styles.homepage}>
                 <section>
-                    Homepage 🚀
+                    <h1 className={styles.h1Title}>Homepage <HiFlag/></h1>
+                    <h2>An H2 subtitle here. <HiFaceSmile/></h2>
                 </section>            
             </main>
             <Footer/>

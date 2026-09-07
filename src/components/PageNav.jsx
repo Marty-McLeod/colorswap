@@ -8,9 +8,14 @@ import { HiMenu } from "react-icons/hi";
 function PageNav() {
     return (
         <nav className={styles.nav}>
-            <div>
+            <div className={styles.menuGroup}>
+                <span>
                 <HiMenu className={styles.menu}/>
-                <Logo/>
+                </span>
+                {/* <Logo/> */}
+                <span>
+                <HiMenu className={styles.menuUnused}/>
+                </span>
             </div>
             <ul>
                 <li><NavLink to="/how-to">How to</NavLink></li>
