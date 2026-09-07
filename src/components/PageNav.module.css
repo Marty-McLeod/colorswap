@@ -10,93 +10,136 @@
 .nav {
   display: flex;
   flex-direction: row;
-  height: 3rem;
-  
+
   justify-content: space-between;
   align-items: center;
 
   background-color: #EDEDE9;
-  padding: 0 2em;
+  padding: 0.6rem 2em;
   border-bottom: 1px solid #D6CCC2;
 
   ul {
     display: flex;
     flex-direction: row;
     list-style: none;
+    /* Removes leading spacing for the ul/li list */
+    padding-inline-start: 0;
     gap: 1rem;
 
-  }
-
-      svg {
-      height: 2rem;
-      width: 2rem;
-    }  
-
-  .menu {
-      display: none;
-      /* font-size: 2rem; */
-    
-      color: darkgray;
+    a:link,a:visited {
+    text-decoration: none;
+    font-size: 1.6rem;
+    color: rgb(78, 89, 100);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     }
 
+    a:hover {
+      background-color: lightgray;
+      color: black;
+    }
 
-    .menuUnused {
+    li {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+
+  .menuIcon, .menuIconUnused {
       display: none;
-       /* font-size: 2rem; */  
-      color: darkgray;
+      font-size: 2rem;  
   }
   
+
+
 }
 
+/* Mobile classes: Adds a left & right bar icon (right icon is
+  invisible/inactive) and justify-content with space-between.
 
+  Positions the <ul> navigation link list relative to the navbar
+  container, immediately at the bottom edge.
+*/
 @media (max-width: 768px) {
-
   .nav {
-    padding: 0 1em;
-
+    position: relative;
+    padding: 0.8rem;
 
     ul {
-      display: none;
-      /* position: absolute;
-      top: 2.6rem;
+      /* position relative to the parent container
+         (<nav>)
+      */
+      position: absolute;
+      top: 100%;
+      left: 0;
+
+      /* IMPORTANT! 'user agent stylesheet' adds top/bottom
+        margins which affect relative placement. (These are
+        "margin-block-start & -end", with 1em in my dev.
+        example.
+      */
+      margin-top: 0;
+      margin-bottom: 0;
+
+      padding: 0 0;
+      gap: 0;
+      width: 40%;
 
       display: flex;
       flex-direction: column;
-      align-items: start; */
+
+      border: 2px solid gray;
+      background-color: #695c52;
+      box-shadow: 0.1rem 0.1rem 0.6rem rgb(98, 89, 89);
 
 
-      background-color: #E3D5CA;
+      li {
+    
+        width: stretch;
+        padding: 0.6rem 1rem;
+        border-bottom: 1px solid slategray;
+      }
+
+      a:link, a:visited {
+        font-size: 0.8rem;
+        color: whitesmoke;
+      }
+
+      a:hover {
+        background-color: rgb(149, 134, 134);
+        color: rgb(43, 43, 43);
+      }         
+
     }
 
-    .menu {
+    .menuIcon {
       display: block;
-      background-color:green;
-
     }
 
-    .menuUnused {
-        display: block;
-      background-color: green;       
-        /* visibility: hidden; */
+    .menuIconUnused { 
+      display: block;
+      visibility: hidden;
     }
-
-
-
 
   }
 
-    .menuGroup {
-      display: flex;
-      width: auto;
+  .menuGroup {
+    display: flex;
+    width: 100%;
+    padding: 0.2rem 1.6rem;
 
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-      background-color: orange;
-    }
+  /* Hides the menu based on isOpen state value */
+  .hideMenu {
+    display: none!important;
+  }
 
 }
+
+
 
 /* .nav ul {
   display: flex;
@@ -105,17 +148,7 @@
 
 } */
 
-.nav a:link,a:visited {
-  text-decoration: none;
-  font-size: 1.6rem;
-  color: slategray;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
-}
 
-.nav a:hover {
-  background-color: lightgray;
-  color: black;
-}
 
 /* .nav {
   display: flex;

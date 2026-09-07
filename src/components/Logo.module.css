@@ -1,9 +1,15 @@
-.logo {
-  height: 2.6rem;
+.logo img {
+  height: 2.2rem;
+  /* NOTE! Removes the tiny bottom gap cause by <a> */  
+  display: block; 
+}
+
+.logo > a:link, a:visited {
+  text-decoration: none;
 }
 
 @media (max-width: 768px) {
-  .logo {
-    height: 2rem;
+  .logo img {
+    height: 1.8rem;
   }
 }
