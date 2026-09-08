@@ -1,0 +1,17 @@
+/* Defaults to <main> container */
+.pageNotFound {
+    background-color: navy;
+    border: 1px solid orange;
+    color: tan;
+}
+
+/* For sections of content with <section> */
+.pageNotFound section {
+    background-color: mediumblue;
+} 
+
+.pageNotFound section > h1 {
+  display: flex;
+  align-items: center;
+  font-size: 3rem;
+}

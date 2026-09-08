@@ -1,3 +1,18 @@
-.api h2 {
-    color: rgb(51, 66, 204);
+/* Defaults to <main> container */
+.api {
+    background-color: darkgreen;
+    border: 1px solid white;
+    color: cornsilk;
+}
+
+/* For sections of content with <section> */
+.api section {
+    background-color: mediumseagreen;
+} 
+
+.api section > h1 {
+  display: flex;
+  align-items: center;
+  font-size: 3rem;
+
 }

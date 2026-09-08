@@ -1,0 +1,20 @@
+.sharedPage {
+  height: calc(100vh - 5rem);
+  margin: 2rem;
+  padding: 1rem 5rem;
+
+}
+
+.sharedPage h2 {
+    font-size: 2.6rem;
+}
+
+.sharedPage section {
+    display: flex;
+    flex-direction: column;
+    height: 85%;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    text-align: center;
+}

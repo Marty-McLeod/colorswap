@@ -1,9 +1,16 @@
 .examples {
-  font-family: "Segoe UI";
-
+  background-color: darkslategrey;
+  border: 1px solid orchid;
+  color: whitesmoke;
 }
 
-.examples h2 {
-    color: blue;
+/* For sections of content with <section> */
+.examples section {
+    background-color: grey;
+} 
 
+.examples section > h1 {
+  display: flex;
+  align-items: center;
+  font-size: 3rem;
 }

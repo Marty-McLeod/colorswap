@@ -17,21 +17,19 @@ function PageNav() {
     }
 
     return (
-        <nav className={styles.nav}>
-            
+        <nav className={styles.navbar}>
+            <HiMenu 
+                onClick={toggleMobileMenu}
+                className={styles.menuIcon}
+            />
+            <Logo/>
+            <HiMenu className={styles.menuIconUnused}/>
 
-                <HiMenu 
-                    onClick={toggleMobileMenu}
-                    className={styles.menuIcon}
-                />
-                <Logo/>
-                <HiMenu className={styles.menuIconUnused}/>
             <ul className={ isOpen ? '' : styles.hideMenu }>
                 <li><NavLink to="/how-to">How-to</NavLink></li>
                 <li><NavLink to="/examples">Examples</NavLink></li>
                 <li><NavLink to="/api">API</NavLink></li>
             </ul>
-
         </nav>
     )
 }

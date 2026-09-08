@@ -7,7 +7,8 @@
   color: #D5BDAF;
 }
 
-.nav {
+.navbar {
+
   display: flex;
   flex-direction: row;
 
@@ -15,7 +16,7 @@
   align-items: center;
 
   background-color: #EDEDE9;
-  padding: 0.6rem 2em;
+  padding: 0 2em;
   border-bottom: 1px solid #D6CCC2;
 
   ul {
@@ -24,23 +25,34 @@
     list-style: none;
     /* Removes leading spacing for the ul/li list */
     padding-inline-start: 0;
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
+
     gap: 1rem;
 
-    a:link,a:visited {
+    li a {
+      display: flex;
+      justify-content: center;
+      min-width: 60px;
+      padding-left: 1rem;
+      padding-right: 1rem;      
+    }
+    
+    li a:link, a:visited {
     text-decoration: none;
     font-size: 1.6rem;
+    font-weight: 600;
     color: rgb(78, 89, 100);
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
     }
 
-    a:hover {
-      background-color: lightgray;
-      color: black;
+    li a:hover {
+      background-color: rgb(165, 134, 134);
+      color: whitesmoke;
     }
 
     li {
-      padding-left: 1rem;
-      padding-right: 1rem;
+
+      border-bottom: none;
     }
   }
 
@@ -60,15 +72,15 @@
   container, immediately at the bottom edge.
 */
 @media (max-width: 768px) {
-  .nav {
+  .navbar {
     position: relative;
-    padding: 0.8rem;
+    padding: 0.6rem;
 
     ul {
-      /* position relative to the parent container
-         (<nav>)
-      */
       position: absolute;
+      /* Places top of <ul> at 100% of the parent element, a.k.a,
+        at the exact bottom edge.
+      */
       top: 100%;
       left: 0;
 
@@ -86,28 +98,27 @@
 
       display: flex;
       flex-direction: column;
-
+      justify-content: left;
       border: 2px solid gray;
       background-color: #695c52;
-      box-shadow: 0.1rem 0.1rem 0.6rem rgb(98, 89, 89);
 
 
       li {
-    
+        display: flex;
+        justify-content: left;       
         width: stretch;
-        padding: 0.6rem 1rem;
-        border-bottom: 1px solid slategray;
+        padding: 0.6rem 0;     
       }
 
-      a:link, a:visited {
+      li:not(:nth-last-child(1)) {
+          border-bottom: 1px solid slategray;
+      }      
+
+      li a:link, a:visited {
+        min-width: 0;
         font-size: 0.8rem;
         color: whitesmoke;
       }
-
-      a:hover {
-        background-color: rgb(149, 134, 134);
-        color: rgb(43, 43, 43);
-      }         
 
     }
 
@@ -120,68 +131,15 @@
       visibility: hidden;
     }
 
+    /*  Hides the menu based on isOpen state value
+        Note: needs to be located inside <nav> else, the
+        higher selector will prevent it from being applied.
+    */
+    .hideMenu {
+      display: none;
+    }
+
   }
 
-  .menuGroup {
-    display: flex;
-    width: 100%;
-    padding: 0.2rem 1.6rem;
-
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  /* Hides the menu based on isOpen state value */
-  .hideMenu {
-    display: none!important;
-  }
 
 }
-
-
-
-/* .nav ul {
-  display: flex;
-  list-style: none;
-  gap: 1rem;
-
-} */
-
-
-
-/* .nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.nav ul {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 4rem;
-}
-
-.nav a:link,
-.nav a:visited {
-  text-decoration: none;
-  color: var(--color-light--2);
-  text-transform: uppercase;
-  font-size: 1.5rem;
-  font-weight: 600;
-} */
-
-/* CSS Modules feature */
-
-/* .nav a:global(.active) {
-  color: var(--color-brand--2);
-}
-
-a.ctaLink:link,
-a.ctaLink:visited {
-  background-color: var(--color-brand--2);
-  color: var(--color-dark--0);
-  padding: 0.8rem 2rem;
-  border-radius: 7px;
-} */
