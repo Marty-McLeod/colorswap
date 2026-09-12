@@ -1,18 +1,16 @@
 /* Defaults to <main> container */
 .api {
-    background-color: darkgreen;
-    border: 1px solid white;
-    color: cornsilk;
+   height: calc(100vh - 5rem);
 }
 
 /* For sections of content with <section> */
 .api section {
-    background-color: mediumseagreen;
+    background-color: var(--color-1);
+    color: var(--color-9);
 } 
 
 .api section > h1 {
   display: flex;
   align-items: center;
   font-size: 3rem;
-
 }

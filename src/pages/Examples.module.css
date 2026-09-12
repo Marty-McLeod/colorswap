@@ -1,12 +1,11 @@
 .examples {
-  background-color: darkslategrey;
-  border: 1px solid orchid;
-  color: whitesmoke;
+   height: calc(100vh - 5rem);
 }
 
 /* For sections of content with <section> */
 .examples section {
-    background-color: grey;
+    background-color: var(--color-1);
+    color: var(--color-9);
 } 
 
 .examples section > h1 {

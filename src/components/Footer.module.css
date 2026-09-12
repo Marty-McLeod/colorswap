@@ -2,9 +2,8 @@
     display: flex;
     padding: 0.6rem;
     
-    background-color: slateblue;
-    
-    color: whitesmoke;
+    background-color: var(--color-7);
+    color: var(--color-5);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     justify-content: center;

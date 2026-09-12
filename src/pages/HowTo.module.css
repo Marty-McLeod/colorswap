@@ -1,12 +1,12 @@
 .howto {
-  background-color: rgb(17, 71, 164);
-  border: 1px solid yellow;
-  color: whitesmoke;
+   height: calc(100vh - 5rem);
 }
 
 /* For sections of content with <section> */
 .howto section {
-    background-color:rgb(103, 130, 153);
+    /* background-color:rgb(123, 186, 242); */
+    background-color: var(--color-1);
+    color: var(--color-9);
 } 
 
 .howto section > h1 {

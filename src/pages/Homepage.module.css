@@ -1,18 +1,38 @@
 /* Defaults to <main> container */
-.homepage {
-  background-color: goldenrod;
-  border: 1px solid green;
+/* .homepage {
+  background-color: var();
+} */
 
+/* <main> container height */
+.homepage {
+   height: calc(100vh - 5rem);
 }
 
 /* For sections of content with <section> */
 .homepage section {
-    background-color:rgb(123, 186, 242);
+    background-color: var(--color-1);
+    color: var(--color-9);
 } 
 
 .homepage section > h1 {
   display: flex;
   align-items: center;
   font-size: 3rem;
-
 }
+
+
+@media (max-width: 768px) {
+    .sharedPage {
+  
+        h1 {
+            font-size: 1.8rem;
+        }
+
+    }
+}
+/* .colorGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 2rem;
+} */

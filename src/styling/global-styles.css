@@ -1,0 +1,61 @@
+/*  Defines the global colors (and color themes, depending on the default settings
+    and/or user setting(s)
+*/
+
+/* const light_steel_palette = ["#f8f9fa","#e9ecef","#dee2e6","#ced4da","#adb5bd","#6c757d","#495057","#343a40","#212529"]; */
+
+/* Assign global values using the 'root' pseudo class */
+:root { 
+
+    /* Global color variable values; '&' is required to nest classes to a pseudo-class!
+    */
+    &, &.light-mode {
+
+        --color-1: #f8f9faff;
+        --color-2: #e9ecefff;
+        --color-3: #dee2e6ff;
+        --color-4: #ced4daff;
+        --color-5: #adb5bdff;
+        --color-6: #6c757dff;
+        --color-7: #495057ff;
+        --color-8: #343a40ff;
+        --color-9: #212529ff;   
+
+        --backdrop-color: rgba(255, 255, 255, 0.1);
+
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+        --shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.12);
+
+        --image-grayscale: 0;
+        --image-opacity: 100%;
+
+    }
+
+
+    &, &.dark-mode {
+        
+        --color-1: #212529ff;
+        --color-2: #343a40ff;
+        --color-3: #495057ff;
+        --color-4: #6c757dff;
+        --color-5: #adb5bdff;
+        --color-6: #ced4daff;
+        --color-7: #dee2e6ff;
+        --color-8: #e9ecefff;
+        --color-9: #f8f9faff;
+        
+    }
+
+    /* Fonts & sizing, etc. */
+    font-family: "Raleway";
+    
+    /*  Removes the user-agent stylesheet (browser) small margin    
+        which creates a gap around a full-width colored navbar. */
+    body {
+        margin: 0;
+        background-color: var(--color-2);
+    }   
+
+
+}
