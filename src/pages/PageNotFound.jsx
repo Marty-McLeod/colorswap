@@ -10,8 +10,8 @@ function PageNotFound() {
             <PageNav/>
             <div className={`${styles.pageNotFound} ${shared.sharedPage}`}>
                 <section>
-                    <h1>Page not found!&nbsp;<HiSignalSlash/></h1>
-                    <h2>An H2 subtitle here. <HiFaceSmile/></h2>
+                    <h1>Sorry - looks like you've taken a wrong turn.</h1>
+                    <h2>Page not found :(</h2>
                 </section>            
             </div>
             <Footer/>

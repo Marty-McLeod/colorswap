@@ -5,6 +5,7 @@ import HowTo from "./pages/HowTo";
 import Examples from "./pages/Examples";
 import PageNotFound from "./pages/PageNotFound";
 import API from "./pages/API";
+import Test from "./pages/Test";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
           <Route index element={<Homepage/>} />
           <Route path="how-to" element={<HowTo/>} />
           <Route path="examples" element={<Examples/>} />
-          <Route path="api" element={<API/>} />
+          <Route path="api" element={<API/>}/>
+          <Route path="test" element={<Test/>}/>
           <Route path="*" element={<PageNotFound/>} />
         </Routes>
       </BrowserRouter>
