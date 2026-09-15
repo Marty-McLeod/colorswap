@@ -6,16 +6,16 @@ import styles from "./PageNotFound.module.css";
 
 function PageNotFound() {
     return (
-        <>
+        <div id="div-parent-layout" className={shared.parentDiv}>
             <PageNav/>
-            <main className={`${styles.pageNotFound} ${shared.sharedPage}`}>
+            <div className={`${styles.pageNotFound} ${shared.sharedPage}`}>
                 <section>
                     <h1>Page not found!&nbsp;<HiSignalSlash/></h1>
                     <h2>An H2 subtitle here. <HiFaceSmile/></h2>
                 </section>            
-            </main>
+            </div>
             <Footer/>
-        </>
+        </div>
     )
 }
 

@@ -7,16 +7,16 @@ import styles from "./API.module.css";
 
 function API() {
     return (
-        <>
+        <div id="div-parent-layout" className={shared.parentDiv}>
             <PageNav/>
-            <main className={`${styles.api} ${shared.sharedPage}`}>
+            <div className={`${styles.api} ${shared.sharedPage}`}>
                 <section>
                     <h1>API page&nbsp;<HiDatabase/></h1>
                     <h2>An H2 subtitle here. <HiFaceSmile/></h2>
                 </section>            
-            </main>
+            </div>
             <Footer/>
-        </>
+        </div>
     )
 }
 

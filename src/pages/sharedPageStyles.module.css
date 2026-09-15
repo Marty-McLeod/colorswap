@@ -1,7 +1,19 @@
-.sharedPage {
+div .parentDiv {
   /* height: calc(100vh - 5rem); */
-  margin: 2rem;
-  padding: 1rem 5rem;
+    /* margin: 2rem 2rem 0 2rem;
+    padding: 1rem 5rem; */
+    /* margin: 1.6rem 2rem 1.6 2rem; */
+    /* padding: 1rem 5rem 1rem 5rem; */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+}
+
+div .sharedPage {
+    flex: 1;
+    margin: 1.5rem 2.5rem;
+    padding: 1rem 5rem 1rem 5rem;
 
 }
 
@@ -12,7 +24,7 @@
 .sharedPage section {
     display: flex;
     flex-direction: column;
-    height: 85%;
+  
 
     align-items: center;
     justify-content: center;
@@ -25,9 +37,13 @@
 }
 
 @media (max-width: 768px) {
-    .sharedPage {
+    div .sharedPage {
         margin: 1rem;
         padding: 0.5rem 0.5rem;
+    }
+
+    .sharedPage {
+
   
         h2 {
             font-size: 1.8rem;

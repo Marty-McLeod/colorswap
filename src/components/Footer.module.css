@@ -1,13 +1,13 @@
 .footer {
     display: flex;
-    padding: 0.6rem;
-    
-    background-color: var(--color-7);
-    color: var(--color-5);
+    padding: 0 1rem;
+
+    background-color: var(--color-4);
+    color: var(--color-7);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     justify-content: center;
-    align-items: center;
+    text-align: center;
 
-
+    overflow-wrap:break-word;
 }

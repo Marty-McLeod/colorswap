@@ -52,8 +52,9 @@
     
     /*  Removes the user-agent stylesheet (browser) small margin    
         which creates a gap around a full-width colored navbar. */
-    body {
+    html, body {
         margin: 0;
+        padding: 0;
         background-color: var(--color-2);
     }   
 

@@ -1,17 +1,8 @@
-/* Defaults to <main> container */
-/* .homepage {
-  background-color: var();
-} */
-
-/* <main> container height */
-.homepage {
-   height: calc(100vh - 5rem);
-}
-
 /* For sections of content with <section> */
 .homepage section {
     background-color: var(--color-1);
     color: var(--color-9);
+    min-height: 75vh;
 } 
 
 .homepage section > h1 {
@@ -22,17 +13,7 @@
 
 
 @media (max-width: 768px) {
-    .sharedPage {
-  
-        h1 {
-            font-size: 1.8rem;
-        }
-
+    .homepage section > h1 {
+      font-size: 2.6rem;
     }
 }
-/* .colorGrid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 1fr 1fr;
-  gap: 2rem;
-} */

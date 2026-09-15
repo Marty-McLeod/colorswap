@@ -7,8 +7,14 @@ const year = date.getFullYear();
 function Footer() {
     return (
         <footer className={styles.footer}>
-            <FaRegCopyright/>&nbsp;Copyright {year} by Marty M. Built with&nbsp;<FaHeart 
-            size={"0.8rem"}/>&nbsp;in React JS&nbsp;<FaReact/>, Python, & FastAPI.
+            <p>
+                <FaRegCopyright/>
+                    &nbsp;Copyright {year} Marty M. Built with&nbsp;
+                <FaHeart size={"0.8rem"}/>
+                    &nbsp;in React JS&nbsp;
+                <FaReact/>
+                    , Python, & FastAPI.
+            </p>
         </footer>
     )
 }
