@@ -47,12 +47,24 @@
       border-bottom: none;
     }
   }
-
+  /*  NOTE: the menu icon will invert colors automaticaly based on the color theme
+      uses and inverted color list for each theme. I.e., light mode: color var. = dark icon,
+      dark mode: color var. = light icon color.
+      Use of the isDarkMode state & additional CSS classes aren't needed in this case.
+  */
   .menuIcon, .menuIconUnused {
       display: none;
       font-size: 2rem;  
   }
   
+  /* .menuIconLight {
+    color: var(--color-7);
+  }
+
+  .menuIconDark {
+    color: var(--color-9);
+  } */
+
   #menuGroup {
     display: flex;
     align-items: center;
@@ -129,6 +141,7 @@
 
     .menuIcon {
       display: block;
+      color: var(--color-9);
     }
 
     .menuIconUnused { 

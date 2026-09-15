@@ -6,7 +6,6 @@ import { HiMenu } from "react-icons/hi";
 import { useState } from "react";
 import DarkModeToggle from "./DarkModeToggle.jsx";
 
-
 function PageNav() {
     const [ isOpen, setIsOpen ] = useState(false);
 
@@ -18,6 +17,8 @@ function PageNav() {
         /*  Builds a responsive navbar.
             Large screens: [ logo (L) ------ li elements - dark mode icon]
             Small screens: [ Menu icon -- logo -- dark mode icon OR hidden menu icon for "justify-content-between" use]
+
+            The menu icon will invert colors automatically due to the inverted theme color sets & variable used in .menuIcon.
         */
         <nav className={styles.navbar}>
             <HiMenu 
