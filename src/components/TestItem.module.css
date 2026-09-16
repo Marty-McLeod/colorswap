@@ -1,0 +1,15 @@
+div .testitem {
+    background-color: var(--color-4);
+    padding: 1rem 1rem;
+    margin: 1rem 1rem;
+    border-radius: 0.8rem;
+
+    border: 1px solid var(--color-8);
+}
+
+.testitem {
+    h4 {
+        font-style: italic;
+        color: var(--color-7);
+    }
+}
