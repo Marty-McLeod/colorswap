@@ -2,34 +2,29 @@ import shared from "./sharedPageStyles.module.css";
 import styles from "./Test.module.css";
 import PageNav from "../components/PageNav";
 import Footer from "../components/Footer";
-import TestItem from "../components/TestItem";
+import ItemsList from "../components/ItemsList.jsx";
 import { getTestData5 } from "../services/apiTestData";
 import { URL_JSONPLACEHOLDER } from "../data/urls.js";
 import Loader from "../components/Loader.jsx";
 
 
 function Test() {
-    // const testItems = useLoaderData();
-    const testItems = getTestData5();
-
-    console.log("testItems:", testItems);
+    const { isLoading, testItems, error } = getTestData5();
+    console.log(testItems);
 
     return (
         <div id="div-parent-layout" className={shared.parentDiv}>
             <PageNav/>
             <div className={`${styles.test} ${shared.sharedPage}`}>
-            {
-                testItems ?? (
-                     <section>
+                <section>
                     {
-                            testItems.map((item) => (
-                                <TestItem item={item} key={item.id} />
-                            ))
+                        isLoading && <Loader/>
+                    }   
+                    { !isLoading && (
+                                <ItemsList items={testItems}/>
+                            )
                     }
-                    </section> 
-                )
-            }
-           
+                </section>              
             </div>
             <Footer/>
         </div>

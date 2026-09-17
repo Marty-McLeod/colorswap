@@ -1,15 +1,19 @@
+/*  
+    Creates a loading ("wait") animation of 3 vertical colored bars with a slight blur.
+*/
+/* Animation container */
 div .loader {
-    background-image: url("src/assets/background.jpg");
-    filter: blur(1rem);
-    -webkit-filter: blur(8px); /* Safari support */
+    filter: blur(0.5rem);
+    --webkit-filter: blur(8px); /* Safari support */
     background-position: center;
     background-size: cover;
 }
 
+/* Animated objects: <div> with color effects & animation frames qpplied */
 .loader div {
-    width: 45px;
+    width: 9rem;
     aspect-ratio: 0.75;
-    --c: no-repeat linear-gradient(theme(colors.stone.800) 0 0);
+    --c: no-repeat linear-gradient(var(--color-5) 0 0);
     background:
       var(--c) 0% 50%,
       var(--c) 50% 50%,
@@ -17,3 +21,31 @@ div .loader {
     background-size: 20% 50%;
     animation: loading 1s infinite linear;
   }
+
+  /* Animated keyframe effects go here */
+ @keyframes loading {
+    20% {
+      background-position:
+        0% 0%,
+        50% 50%,
+        100% 50%;
+    }
+    40% {
+      background-position:
+        0% 100%,
+        50% 0%,
+        100% 50%;
+    }
+    60% {
+      background-position:
+        0% 50%,
+        50% 100%,
+        100% 0%;
+    }
+    80% {
+      background-position:
+        0% 50%,
+        50% 50%,
+        100% 100%;
+    }
+  }  
