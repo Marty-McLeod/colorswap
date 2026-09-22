@@ -1,15 +1,31 @@
-div .itemsList {
-    background-color: var(--color-4);
-    padding: 1rem 1rem;
-    margin: 1rem 1rem;
-    border-radius: 0.8rem;
-
-    border: 1px solid var(--color-8);
+.itemsList {
+    list-style: none;
+    display:grid;
+    gap: 1rem;
+    
+    padding: 0;
+    
 }
 
-.itemsList {
+.itemsList li {
+    text-align: start;
+    border: 1px solid var(--color-4);
+    border-radius: 1rem;
+    padding: 0 1rem;
+    /* align-items: start; */
+}
+
+.itemsList li {
     h4 {
         font-style: italic;
         color: var(--color-7);
+    }
+
+    h2 {
+        font-size: 1.1rem;
+    }
+
+    h4 {
+        text-transform: capitalize;
     }
 }

@@ -1,0 +1,43 @@
+section .posts {
+    /* max-width: 640px;
+    margin: 0 auto;
+    padding: 1rem; */
+    anchor-name: --section-posts;
+}
+
+.posts ul {
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+}
+
+.posts li {
+    text-align: left;
+    border: 1px solid var(--color-7);
+    border-radius: 0.6rem;
+    padding: 1rem;
+
+    p::first-letter {
+        text-transform: capitalize;
+    }
+
+    p {
+        font-style: italic;     
+        color: var(--color-6);   
+    }
+}
+
+.posts h1 {
+    margin: 1rem 2rem;
+}
+
+.posts li > h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+}
+
+.posts li > h2 {
+    text-transform: capitalize;
+}
