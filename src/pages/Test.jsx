@@ -5,9 +5,10 @@ import PageNav from "../components/PageNav";
 import Footer from "../components/Footer";
 import ItemsList from "../components/ItemsList.jsx";
 import Loader from "../components/Loader.jsx";
+import { URL_JSONPLACEHOLDER } from "../data/urls";
 
 function Test() {
-  const { isLoading, data, error } = getApiData(5);
+  const { isLoading, data, error } = getApiData(5, URL_JSONPLACEHOLDER);
 
   if (error) {
     return (

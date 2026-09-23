@@ -17,8 +17,40 @@ div .sharedPage {
 
 }
 
-.sharedPage h2 {
-    font-size: 2.6rem;
+/* Horizontal line styling */
+hr {
+    border: none;           /* Remove default border */
+    width: 90%;             /* Control line width */
+    margin: 0.6rem auto;      /* Center the line with vertical spacing */
+}
+
+hr.basic {
+  border-top: 2px solid var(--color-3); /* Set line thickness and color */
+}
+
+hr.dashed {
+  border-top: 2px dashed var(--color-3); /* Set line thickness and color */
+}
+
+
+
+/* Sets font sizes for title <h1>..etc text */
+.sharedPage {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.17rem;
+    }
+
+    h4 {
+        font-size: 1rem;
+    }
 }
 
 .sharedPage section {
@@ -29,7 +61,7 @@ div .sharedPage {
     align-items: center;
     justify-content: center;
 
-    gap: 2rem;
+    /* gap: 2rem; */
     text-align: center;
 
     border-radius: 0.4rem;
@@ -43,11 +75,25 @@ div .sharedPage {
     }
 
     .sharedPage {
-        h2 {
-            font-size: 1.8rem;
+
+        h1 { 
+            font-size: 1.8rem; 
         }
-   section > h1 {
-      font-size: 2.4rem;
-    }            
+
+        h2 { 
+            font-size: 1.3rem; 
+        }
+
+        h3 { 
+            font-size: 1.1rem; 
+        }
+
+        h4 {
+            font-size: 0.9rem;
+        }
+
+    /* section > h1 {
+        font-size: 2.4rem;
+        }             */
     }
 }

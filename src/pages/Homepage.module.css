@@ -3,12 +3,13 @@
     background-color: var(--color-1);
     color: var(--color-9);
     min-height: 75vh;
+
+    justify-content: start;
 } 
 
 .homepage section > h1 {
   display: flex;
   align-items: center;
-  font-size: 3rem;
 }
 
 

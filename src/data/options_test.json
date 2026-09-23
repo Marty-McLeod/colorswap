@@ -1,0 +1,20 @@
+{
+    "options": { 
+    "hex_rgb": true, 
+    "hex_hsl": false,
+
+    "name_hex": false,
+    "name_rgb": false,
+
+    "rgb_hsl": false,
+    "rgb_hex": false,
+
+    "hsl_hex": false,
+    "hsl_rgb": false,
+    "hsl_hsv": false,
+
+    "hsv_hsl": false,
+    "hsv_hex": false,
+    "hsv_rgb": false
+    }
+}

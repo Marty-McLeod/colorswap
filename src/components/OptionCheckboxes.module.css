@@ -1,0 +1,17 @@
+.optionCheckboxes {
+    anchor-name: --option-checkboxes;
+
+    display: grid;
+    gap: 0.5rem;
+    min-width: 400px;
+}
+
+.optionCheckboxes input {
+    background-color: var(--color-6);
+    
+}
+
+.optionCheckboxes p {
+    background-color: var(--primary);
+    padding: 1rem;
+}
