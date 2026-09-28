@@ -15,6 +15,8 @@ function Homepage() {
     //     console.log(num,"key:", key, "value:", value);
     // });
 
+    // console.log("options:", options);
+    
     return (
         <div id="div-parent-layout" className={shared.parentDiv}>
             <PageNav/>
@@ -23,9 +25,7 @@ function Homepage() {
                     <h1>Welcome to ColorSwap!</h1>
                     <h2>ColorSwap makes it easy to change all kinds of color values across files</h2>
                     <hr className={shared.basic} />
-                    <div id="div-controls">
                         <OptionCheckboxes options={options} />
-                    </div>
                 </section>
             </div>
             <Footer/>
