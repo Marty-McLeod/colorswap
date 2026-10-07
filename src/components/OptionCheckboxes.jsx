@@ -1,4 +1,6 @@
 import styles from "./OptionCheckboxes.module.css";
+import { useState } from "react";
+
 
 /*  Builds <input> elements of type checkbox + text and/or number based on the key-value
  *   pair types in a given object in the array of objects passed in props.
@@ -7,11 +9,13 @@ import styles from "./OptionCheckboxes.module.css";
  *   Creates a responsive grid with height of each <div> based on the <input>s needed.
  *
  */
-function buildCheckboxesArrayObjects(options, labels) {
+function buildCheckboxesArrayObjects(options, labels, onchange) {
   const optArray = [];
   let keys = [];
   let subArray = [];
   let name = "";
+  let objLabel = {};
+
 
   /* Iterates (maps) over the options object array, using each object   */
   options.map((objOption, index) => {
@@ -21,13 +25,14 @@ function buildCheckboxesArrayObjects(options, labels) {
 
     /* Create a checkbox for each option, regardless of type */
     subArray = [
-      <span>
+      <span key={name}>
         <input
           type="checkbox"
           id={`chk-${name}`}
           name={`${name}`}
           value={`${name}`}
           checked={objOption[name] ? "checked" : ""}
+          onChange={(objOption, name) => onchange(objOption, name)}
         />
         <label htmlFor={`chk-${name}`}>{objLabel[name]}</label>
       </span>,
@@ -46,7 +51,7 @@ function buildCheckboxesArrayObjects(options, labels) {
                 along with their current values as the value attribute  */
             <>
               <span>
-                <label for={`${keys[1]}`}>{`${keys[1]}`}: </label>
+                <label htmlFor={`${keys[1]}`}>{`${keys[1]}`}: </label>
                 <input
                   type="text"
                   id={`${keys[1]}`}
@@ -55,7 +60,7 @@ function buildCheckboxesArrayObjects(options, labels) {
                 />
               </span>
               <span>
-                <label for={`${keys[2]}`}>{`${keys[2]}`}: </label>
+                <label htmlFor={`${keys[2]}`}>{`${keys[2]}`}: </label>
                 <input
                   type="number"
                   id={`${keys[2]}`}
@@ -72,7 +77,7 @@ function buildCheckboxesArrayObjects(options, labels) {
         case "colorswap_rgb":
           subArray.push(
             <span>
-              <label for={`${keys[1]}`}>{`${keys[1]}`}: </label>
+              <label htmlFor={`${keys[1]}`}>{`${keys[1]}`}: </label>
               <input
                 type="text"
                 id={`${keys[1]}`}
@@ -102,9 +107,14 @@ function buildCheckboxesArrayObjects(options, labels) {
  *   select. Sets boxes as default where indicated as already selected in the
  *   object. (I.e., "true")
  */
-function OptionCheckboxes({ options, labels }) {
+function OptionCheckboxes({ options, labels, onChange, children }) {
+  // console.log("options:", options);
+  // console.log(("labels:", labels));  
   // Get the objects to be rendered based on props passed
-  const optionsArray = buildCheckboxesArrayObjects(options, labels);
+
+  
+
+  const optionsArray = buildCheckboxesArrayObjects(options, labels, onChange);
 
   return (
     /* Parent container for the option groups to be rendered */
@@ -117,6 +127,7 @@ function OptionCheckboxes({ options, labels }) {
           </div> // <div> input checkbox
         )) // options.map()
       }
+      { children }
     </div> // <div> "div-checkbox-cont"
   );
 }
