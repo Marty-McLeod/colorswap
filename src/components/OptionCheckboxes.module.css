@@ -12,10 +12,10 @@
 /*  Custom CSS function to add opacity to any color passed. Uses new CSS custom function
     functionality
 */
-@function --transparent(--color type(<color>), --alpha type(<number>)) returns
+/* @function --transparent(--color type(<color>), --alpha type(<number>)) returns
   type(<color>) {
   result: oklch(from var(--color) l c h / var(--alpha));
-}
+} */
 
 .optionCheckboxes div {
   display: flex;
@@ -27,7 +27,7 @@
   border: 1px solid var(--gray-600);
   border-radius: 0.5rem;
 
-  background-color: --transparent(var(--color-5), 0.4);
+  background-color: color-mix(in srgb, var(--color-4), transparent 50%);
 }
 
 .optionCheckboxes p {
@@ -43,7 +43,7 @@
 }
 
 .optionCheckboxes label {
-  font-weight: medium;
+  font-weight: 600;
 }
 
 .optionCheckboxes input[type="checkbox"] {
