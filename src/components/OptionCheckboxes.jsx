@@ -62,10 +62,10 @@ const OptionsCheckboxArray = function buildCheckboxArray({options, labels, onCha
           (
             <>
                 <span>
-                  <label htmlFor={`${keys[1]}`}>{`${keys[1]}`}: </label>
+                  <label htmlFor={`${keyname}-${keys[1]}`}>{`${keys[1]}`}: </label>
                   <select
                     defaultValue={`${objOption[keys[1]]}`}
-                    id={`${keys[1]}`}
+                    id={`${keyname}-${keys[1]}`}
                     name={`${keys[1]}`}
                     onChange={(e) => onChangeSelect(e, index)}
                   >
@@ -81,10 +81,10 @@ const OptionsCheckboxArray = function buildCheckboxArray({options, labels, onCha
                   </select>
                 </span>
                 <span>
-                  <label htmlFor={`${keys[2]}`}>{`${keys[2]}`}: </label>
+                  <label htmlFor={`${keyname}-${keys[2]}`}>{`${keys[2]}`}: </label>
                   <input
                     type="number" min="0" max="100"
-                    id={`${keys[2]}`}
+                    id={`${keyname}-${keys[2]}`}
                     name={`${keys[2]}`}
                     value={`${objOption[keys[2]]}`}
                     onChange={(e) => onChangeNumber(e, index)}
@@ -97,10 +97,10 @@ const OptionsCheckboxArray = function buildCheckboxArray({options, labels, onCha
           (num_keys > 1) && (OPT_KEYS_COLORSWAP.includes(keyname)) && 
           (
             <span>
-              <label htmlFor={`${keys[1]}`}>{`${keys[1]}`}: </label>
+              <label htmlFor={`${keyname}-${keys[1]}`}>{`${keys[1]}`}: </label>
               <select
                 defaultValue={`${objOption[keys[1]]}`}
-                id={`${keys[1]}`}
+                id={`${keyname}-${keys[1]}`}
                 name={`${keys[1]}`}
                 onChange={(e) => onChangeSelect(e,index, `${keys[1]}`)}
               >
