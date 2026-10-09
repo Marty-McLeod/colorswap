@@ -18,7 +18,7 @@
         { "colorswap_rgb": false, "order": "r_to_g" }   
     ],
 
-    "labels": [
+    "optionLabels": [
         { "hex_rgb": "Hex to RGB" }, 
         { "hex_hsl": "Hex to HSL" },
         { "name_hex": "Name to hex" },
@@ -34,7 +34,7 @@
         { "lightdark_hex": "HEX light/dark" },
         { "lightdark_rgb": "RGB light/dark" },
         { "colorswap_hex": "Colorswap HEX" },
-        { "colorswap_rgb": "Colorswap RGB" }           
+        { "colorswap_rgb": "Colorswap RGB" }
     ]
 
 }

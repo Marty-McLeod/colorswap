@@ -9,12 +9,14 @@ import Button from "../components/Button";
 
 function Homepage() {
     const optionsArray = jsonOptions["options"];
-    const labelsArray = jsonOptions["labels"];
+    const labelsArray = jsonOptions["optionLabels"];
     const newOptionsArray = structuredClone(optionsArray);
 
     const [optValues, setOptValues] = useState(newOptionsArray);
 
     useEffect(() => {
+    console.log("optValues:", optValues);
+
   }, [optValues]);
 
     function handleCheckbox(e, index) {
@@ -23,6 +25,41 @@ function Homepage() {
         const copy = optValues.map((option, i) => {
             if(i === index) {
                 option[key] = !option[key];
+                return option;
+            } else { return option; }
+        })
+
+        setOptValues(copy);
+    }
+
+    function handleSelect(e, index) {
+        const { name, value } = e.target;
+        // const selection = e.target.value;
+        // const selectName = e.target.selectName
+        console.log("value:", value);
+        console.log("name:", name);
+
+        const copy = optValues.map((option, i) => {
+            if(i === index) {
+                option[name] = value;
+                return option;
+            } else { return option; }
+        })
+
+        setOptValues(copy);
+    }
+
+    function handleNumber(e, index) {
+        const { name, value } = e.target;
+        // const selection = e.target.value;
+        // const selectName = e.target.selectName
+        console.log("value:", value);
+        console.log("name:", name);
+        const intValue = parseInt(value);
+
+        const copy = optValues.map((option, i) => {
+            if(i === index) {
+                option[name] = intValue;
                 return option;
             } else { return option; }
         })
@@ -45,7 +82,13 @@ function Homepage() {
                     <h1>Welcome to ColorSwap!</h1>
                     <h2>ColorSwap makes it easy to change all kinds of color values across files</h2>
                     <hr className={shared.basic} />
-                        <OptionCheckboxes options={optValues} labels={labelsArray} onChange={handleCheckbox}>
+                        <OptionCheckboxes 
+                            options={optValues} 
+                            labels={labelsArray} 
+                            onChangeCheckbox={handleCheckbox}
+                            onChangeSelect={handleSelect}
+                            onChangeNumber={handleNumber}
+                        >
                             <Button onClick={handleResetDefault}>Reset to default</Button>
                         </OptionCheckboxes>
                 </section>

@@ -22,7 +22,7 @@
   flex-direction: column;
   align-items: start;
   min-height: max-content;
-  padding: 0.6rem;
+  padding: 0.2rem 0.6rem;
   margin: 0.2rem;
   border: 1px solid var(--gray-600);
   border-radius: 0.5rem;
@@ -36,10 +36,18 @@
   padding: 1rem;
 }
 
+.optionCheckboxes span #single {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
 .optionCheckboxes span {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 0.2rem 0;
+  width: 100%;
 }
 
 .optionCheckboxes label {
@@ -53,9 +61,25 @@
   width: 1.6rem;
 }
 
+.optionCheckboxes select {
+  background-color: color-mix(in srgb, var(--color-4), transparent 30%);
+  color: var(--color-8);
+  padding: 0.2rem 1rem;
+}
+
+.optionCheckboxes select::selection {
+  background-color: var(--primary);
+  color: yellow;
+}
+
+/* .optionCheckboxes   option {
+    font-style: italic;
+  } */
+
+
 .optionCheckboxes input[type="text"],
 input[type="number"] {
-  padding: 0 1rem;
+  padding: 0.4rem 1rem;
   border: 1px solid var(--color-4);
   border-radius: 0.2rem;
   box-shadow: none;
