@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import OptionCheckboxes from "../components/OptionCheckboxes";
 import jsonOptions from "../data/options_array.json" with { type: "json"};
 import Button from "../components/Button";
+import Toggle from "../components/Toggle";
 
 function Homepage() {
     const optionsArray = jsonOptions["options"];
@@ -13,11 +14,19 @@ function Homepage() {
     const newOptionsArray = structuredClone(optionsArray);
 
     const [optValues, setOptValues] = useState(newOptionsArray);
+    const [exToggle, setExToggle] = useState(false);
 
     useEffect(() => {
-    console.log("optValues:", optValues);
+    // console.log("optValues:", optValues);
+        console.log("exToggle:", exToggle);
+  }, [optValues, exToggle]);
 
-  }, [optValues]);
+
+    function handleToggle() {
+        // Toggles the current toggle value
+        setExToggle((bool) => !bool);
+    }
+
 
     function handleCheckbox(e, index) {
         const key = e.target.value;
@@ -34,10 +43,7 @@ function Homepage() {
 
     function handleSelect(e, index) {
         const { name, value } = e.target;
-        // const selection = e.target.value;
-        // const selectName = e.target.selectName
-        console.log("value:", value);
-        console.log("name:", name);
+
 
         const copy = optValues.map((option, i) => {
             if(i === index) {
@@ -51,10 +57,6 @@ function Homepage() {
 
     function handleNumber(e, index) {
         const { name, value } = e.target;
-        // const selection = e.target.value;
-        // const selectName = e.target.selectName
-        console.log("value:", value);
-        console.log("name:", name);
         const intValue = parseInt(value);
 
         const copy = optValues.map((option, i) => {
@@ -82,12 +84,17 @@ function Homepage() {
                     <h1>Welcome to ColorSwap!</h1>
                     <h2>ColorSwap makes it easy to change all kinds of color values across files</h2>
                     <hr className={shared.basic} />
+                        <div className={styles.headerOptions}><h3>Color option controls</h3>
+                            <Toggle checkVal={exToggle} onChange={handleToggle}>Show examples</Toggle>
+                            {/* <Toggle checked="true" isReadOnly={true}/> */}
+                        </div>
                         <OptionCheckboxes 
                             options={optValues} 
                             labels={labelsArray} 
                             onChangeCheckbox={handleCheckbox}
                             onChangeSelect={handleSelect}
                             onChangeNumber={handleNumber}
+                            showExamples={exToggle}
                         >
                             <Button onClick={handleResetDefault}>Reset to default</Button>
                         </OptionCheckboxes>

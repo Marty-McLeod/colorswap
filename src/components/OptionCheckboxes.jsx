@@ -1,17 +1,19 @@
 import { FaJugDetergent } from "react-icons/fa6";
 import styles from "./OptionCheckboxes.module.css";
+import { OPTION_EXAMPLE_STRINGS } from "../data/string_array.js";
+
 
 const OPT_KEYS_SINGLE = [
   "hex_rgb", "hex_hsl", "name_hex", "name_rgb",
   "rgb_hsl", "rgb_hex", "hsl_hex", "hsl_rgb",
-  "hsl_hsv", "hsv_hsl", "hsv_hex", "hsv_rgb",4
+  "hsl_hsv", "hsv_hsl", "hsv_hex", "hsv_rgb",
 ];
 const OPT_KEYS_LIGHTDARK = ["lightdark_hex", "lightdark_rgb"];
 const LIGHTDARK_MODES = ["lighten", "darken"];
 
 const OPT_KEYS_COLORSWAP = ["colorswap_hex", "colorswap_rgb"];
 const COLORSWAP_ORDERS = ["r_to_g", "g_to_r", "g_to_b", "b_to_g", "r_to_b", "b_to_r"];
- const COLORSWAP_ORDER_LABELS = { 
+const COLORSWAP_ORDER_LABELS = { 
   "r_to_g": "R ↔ G", "g_to_r": "G ↔ R", "g_to_b": "G ↔ B", 
   "b_to_g": "B ↔ G", "r_to_b": "R ↔ B", "b_to_r": "B ↔ R" 
 };
@@ -23,7 +25,7 @@ const COLORSWAP_ORDERS = ["r_to_g", "g_to_r", "g_to_b", "b_to_g", "r_to_b", "b_t
  *   Creates a responsive grid with height of each <div> based on the <input>s needed.
  *
  */
-const OptionsCheckboxArray = function buildCheckboxArray({options, labels, onChangeCheckbox, onChangeSelect, onChangeNumber}) 
+const OptionsCheckboxArray = function buildCheckboxArray({options, labels, onChangeCheckbox, onChangeSelect, onChangeNumber, showExamples}) 
 {
   const optArray = [];
   let keys = [];
@@ -44,7 +46,7 @@ const OptionsCheckboxArray = function buildCheckboxArray({options, labels, onCha
     /* Create a checkbox for each option, regardless of type */
     optArray.push(
       <div key={index} className={styles.divCheckbox}>
-        <span key={index}>
+        <span key={index} id="single">
           <input
             type="checkbox"
             id={`chk-${keyname}`}
@@ -118,6 +120,9 @@ const OptionsCheckboxArray = function buildCheckboxArray({options, labels, onCha
           )
 
         }
+        { showExamples && (
+          <span id={styles.example}>Ex: { OPTION_EXAMPLE_STRINGS[keyname]}</span>
+        )}
       </div>
     );
 
@@ -131,7 +136,7 @@ const OptionsCheckboxArray = function buildCheckboxArray({options, labels, onCha
  *   select. Sets boxes as default where indicated as already selected in the
  *   object. (I.e., "true")
  */
-function OptionCheckboxes({ options, labels, onChangeCheckbox, onChangeSelect, onChangeNumber, children }) {
+function OptionCheckboxes({ options, labels, onChangeCheckbox, onChangeSelect, onChangeNumber, children, showExamples }) {
 
   return (
     /* Parent container for the option groups to be rendered */
@@ -139,7 +144,7 @@ function OptionCheckboxes({ options, labels, onChangeCheckbox, onChangeSelect, o
       {
         // Map a <div> child + option field group for each array object
            <OptionsCheckboxArray options={options} labels={labels} onChangeCheckbox={onChangeCheckbox} 
-              onChangeSelect={onChangeSelect} onChangeNumber={onChangeNumber}
+              onChangeSelect={onChangeSelect} onChangeNumber={onChangeNumber} showExamples={showExamples}
            />
       }
       { children }
