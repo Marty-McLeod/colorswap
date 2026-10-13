@@ -2,7 +2,7 @@
 .homepage section {
     background-color: var(--color-1);
     color: var(--color-9);
-    min-height: 75vh;
+    min-height: 50vh; /* Formerly 75vh */
 
     justify-content: start;
 } 
@@ -22,11 +22,22 @@
   align-items: center;
   flex-direction: row;
 
-  h3 {
-    margin-right: 2rem;
-  }
+
 }
 
+.buttonRow {
+  display: flex;
+  justify-content: start;
+
+  margin: 0.5rem 0rem;
+  width: 100%;
+}
+
+.fileNotes {
+
+  font-family: 'Courier New', Courier, monospace;
+  color: var(--color-7);
+}
 /* @media (max-width: 768px) {
  
 } */

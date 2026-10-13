@@ -7,6 +7,10 @@ import OptionCheckboxes from "../components/OptionCheckboxes";
 import jsonOptions from "../data/options_array.json" with { type: "json"};
 import Button from "../components/Button";
 import Toggle from "../components/Toggle";
+import FileInput from "../components/FileInput";
+import MultiFileInput from "../components/MultiFileInput";
+
+const FILETYPES = [".txt", ".css/.sass", ".md", ".rb", ".py", ".js/.jsx", ".c", ".erb", ".html"];
 
 function Homepage() {
     const optionsArray = jsonOptions["options"];
@@ -18,15 +22,12 @@ function Homepage() {
 
     useEffect(() => {
     // console.log("optValues:", optValues);
-        console.log("exToggle:", exToggle);
-  }, [optValues, exToggle]);
-
+  }, [optValues]);
 
     function handleToggle() {
         // Toggles the current toggle value
         setExToggle((bool) => !bool);
     }
-
 
     function handleCheckbox(e, index) {
         const key = e.target.value;
@@ -43,8 +44,6 @@ function Homepage() {
 
     function handleSelect(e, index) {
         const { name, value } = e.target;
-
-
         const copy = optValues.map((option, i) => {
             if(i === index) {
                 option[name] = value;
@@ -96,8 +95,22 @@ function Homepage() {
                             onChangeNumber={handleNumber}
                             showExamples={exToggle}
                         >
-                            <Button onClick={handleResetDefault}>Reset to default</Button>
                         </OptionCheckboxes>
+                    <div className={styles.buttonRow}>
+                        <Button onClick={handleResetDefault} type="primary">Reset to default</Button>
+                    </div>
+                    <h2>Upload or drag-and-drop files here</h2>
+                    <div className={styles.headerOptions}>
+                        <h3>Acceptable text-based file types:&nbsp;
+                            <span className={styles.fileNotes}>
+                            {
+                                FILETYPES.map((ext) => (`${ext} `))
+                            }
+                        </span>
+                    </h3>
+                    </div>
+                    <MultiFileInput/>
+                    {/* <FileInput /> */}
                 </section>
             </div>
             <Footer/>

@@ -143,8 +143,13 @@ function OptionCheckboxes({ options, labels, onChangeCheckbox, onChangeSelect, o
     <div className={styles.optionCheckboxes} id="div-checkbox-cont">
       {
         // Map a <div> child + option field group for each array object
-           <OptionsCheckboxArray options={options} labels={labels} onChangeCheckbox={onChangeCheckbox} 
-              onChangeSelect={onChangeSelect} onChangeNumber={onChangeNumber} showExamples={showExamples}
+           <OptionsCheckboxArray 
+              options={options} 
+              labels={labels} 
+              onChangeCheckbox={onChangeCheckbox} 
+              onChangeSelect={onChangeSelect} 
+              onChangeNumber={onChangeNumber} 
+              showExamples={showExamples}
            />
       }
       { children }
