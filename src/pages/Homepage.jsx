@@ -9,8 +9,11 @@ import Button from "../components/Button";
 import Toggle from "../components/Toggle";
 import FileInput from "../components/FileInput";
 import MultiFileInput from "../components/MultiFileInput";
+import DeleteIcon from "../components/DeleteIcon";
 
-const FILETYPES = [".txt", ".css/.sass", ".md", ".rb", ".py", ".js/.jsx", ".c", ".erb", ".html"];
+const FILETYPES = [".txt", ".css/.sass", ".md", ".rb", ".py", 
+    ".js/.jsx", ".c/.cpp", ".erb", ".html"
+];
 
 function Homepage() {
     const optionsArray = jsonOptions["options"];
@@ -28,6 +31,7 @@ function Homepage() {
         // Toggles the current toggle value
         setExToggle((bool) => !bool);
     }
+
 
     function handleCheckbox(e, index) {
         const key = e.target.value;
@@ -101,13 +105,12 @@ function Homepage() {
                     </div>
                     <h2>Upload or drag-and-drop files here</h2>
                     <div className={styles.headerOptions}>
-                        <h3>Acceptable text-based file types:&nbsp;
-                            <span className={styles.fileNotes}>
+                        <h3>Acceptable text-based file types:</h3>
+                            <div className={styles.fileNotes}>
                             {
                                 FILETYPES.map((ext) => (`${ext} `))
                             }
-                        </span>
-                    </h3>
+                        </div>
                     </div>
                     <MultiFileInput/>
                     {/* <FileInput /> */}

@@ -21,8 +21,17 @@
   display: flex;
   align-items: center;
   flex-direction: row;
+  justify-content: space-between;
 
+  h3 {
+    text-align: left;
+  }
 
+  div {
+    text-align: left;
+    max-width: 60%;
+    margin:  0.9rem 0.4rem;
+  }  
 }
 
 .buttonRow {
@@ -38,6 +47,24 @@
   font-family: 'Courier New', Courier, monospace;
   color: var(--color-7);
 }
-/* @media (max-width: 768px) {
- 
-} */
+
+
+@media (max-width: 768px) {
+  
+
+  .headerOptions {
+    display: flex;
+    align-items: start;
+    flex-direction: row;
+  }
+
+  .headerOptions h3 {
+    text-align:start;
+
+  }
+
+  .headerOptions div {
+    text-align: left;
+    max-width: 50%;
+  }
+}
