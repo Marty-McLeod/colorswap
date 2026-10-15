@@ -7,13 +7,10 @@ import OptionCheckboxes from "../components/OptionCheckboxes";
 import jsonOptions from "../data/options_array.json" with { type: "json"};
 import Button from "../components/Button";
 import Toggle from "../components/Toggle";
-import FileInput from "../components/FileInput";
 import MultiFileInput from "../components/MultiFileInput";
-import DeleteIcon from "../components/DeleteIcon";
 
-const FILETYPES = [".txt", ".css/.sass", ".md", ".rb", ".py", 
-    ".js/.jsx", ".c/.cpp", ".erb", ".html"
-];
+
+export const FILETYPES = ".txt, .css, .sass, .md, .rb, .py, .js, .jsx, .c, .cpp, .erb, .html";
 
 function Homepage() {
     const optionsArray = jsonOptions["options"];
@@ -87,13 +84,17 @@ function Homepage() {
                     <h1>Welcome to ColorSwap!</h1>
                     <h2>ColorSwap makes it easy to change all kinds of color values across files</h2>
                     <hr className={shared.basic} />
-                        <div className={styles.headerOptions}><h3>Color option controls</h3>
-                            <Toggle checkVal={exToggle} onChange={handleToggle}>Show examples</Toggle>
+                        <div className={styles.headerOptions}>
+
+                            <h3>Color option controls</h3>
+                            <span className={styles.toggleContainer}>
+                                <Toggle checkVal={exToggle} onChange={handleToggle}>Show examples</Toggle>
+                            </span>
                             {/* <Toggle checked="true" isReadOnly={true}/> */}
                         </div>
                         <OptionCheckboxes 
                             options={optValues} 
-                            labels={labelsArray} 
+                            labels={labelsArray}
                             onChangeCheckbox={handleCheckbox}
                             onChangeSelect={handleSelect}
                             onChangeNumber={handleNumber}
@@ -103,17 +104,15 @@ function Homepage() {
                     <div className={styles.buttonRow}>
                         <Button onClick={handleResetDefault} type="primary">Reset to default</Button>
                     </div>
-                    <h2>Upload or drag-and-drop files here</h2>
-                    <div className={styles.headerOptions}>
+                    <h2>Upload or drag & drop files here</h2>
+                    <div className={styles.headerFileNotes}>
                         <h3>Acceptable text-based file types:</h3>
-                            <div className={styles.fileNotes}>
-                            {
-                                FILETYPES.map((ext) => (`${ext} `))
-                            }
-                        </div>
+                        <p className={styles.fileNotes}>
+                            { FILETYPES }
+                        </p>
                     </div>
-                    <MultiFileInput/>
-                    {/* <FileInput /> */}
+                    <MultiFileInput accept={FILETYPES}/>
+                    {/* <FileInput /> */}                 
                 </section>
             </div>
             <Footer/>

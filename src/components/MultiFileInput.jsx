@@ -1,12 +1,14 @@
-import { ChangeEvent, useEffect, useRef, useState} from "react";
+import { useEffect, useRef, useState} from "react";
 import Button from "./Button";
 import styles from "./MultiFileInput.module.css";
-import { HiFolder, HiOutlineFolder, HiOutlineTrash } from "react-icons/hi";
+import { HiOutlineFolder } from "react-icons/hi";
 import DeleteIcon from "./DeleteIcon";
 
 const URL_HTTPBIN = "https://httpbin.org/post";
 const MAX_FILECOUNT = 5;
-const MAX_CHAR_COUNT = 20;
+const MAX_CHAR_COUNT = 44;
+const MAX_CHAR_COUNT_RESPONSIVE = 12;
+
 
 function MultiFileInput({ accept = "image/*"}) {
     const [fileList, setFileList] = useState([]);
@@ -48,13 +50,22 @@ function MultiFileInput({ accept = "image/*"}) {
     function handleFileDrop(e) {
         e.preventDefault();
 
-        if(e.dataTransfer.files && e.dataTransfer.files[0]) {
-            const file = e.dataTransfer.files[0];
-            setImageFile(file);
+        // if(e.dataTransfer.files && e.dataTransfer.files[0]) {
+        //     const file = e.dataTransfer.files[0];
+        //     // setImageFile(file);
+        // }
+        const newFilesArray = Array.from(e.dataTransfer.files);
+        // Return if the file queue count doesn't have enought remaning file count "slots"
+        if(MAX_FILECOUNT - fileCountRef.current < newFilesArray.length) {
+            console.log("** Not enough file slots remaining**");
+            return;
         }
+        // Update current file # count and the file list array
+        fileCountRef.current += newFilesArray.length;
+        setFileList((currentFileList) => [...currentFileList, ...newFilesArray]);        
     }
 
-    function handleImageUploadClick() {
+    function handleDropzoneClick() {
         fileInputRef.current?.click();
     }
 
@@ -104,11 +115,13 @@ function MultiFileInput({ accept = "image/*"}) {
                 {
                     fileList.map((file, index) => (
                         <li key={index}>
-                            <span className={styles.fileType}>
-                                <HiOutlineFolder className={styles.iconFolder}/>{file.name.split('.')[1]}
-                            </span>
+                            <div className={styles.fileType}>
+                                <HiOutlineFolder className={styles.iconFolder}/>
+                                {file.name.split('.')[1]}
+                            </div>
+                            <div className={styles.fileNameLarge}>{ truncateString(file.name, MAX_CHAR_COUNT) }</div>
+                            <div className={styles.fileNameMobile}>{ truncateString(file.name, MAX_CHAR_COUNT_RESPONSIVE) }</div>
                             <span className={styles.fill}></span>
-                            <span>{truncateString(file.name, MAX_CHAR_COUNT)}</span>
                             <DeleteIcon onClick={handleDelete} index={index}/>
                         </li>
                     ))
@@ -119,10 +132,10 @@ function MultiFileInput({ accept = "image/*"}) {
                 className={styles.dropZone}
                 onDragOver={handleDragOver}
                 onDrop={handleFileDrop}
-                onClick={handleImageUploadClick}
+                onClick={handleDropzoneClick}
             >
                 <span className={styles.desktopUploadText}>
-                    Drag and drop here or click to upload
+                    Drag & drop here or click to upload
                 </span>
                 <span className={styles.mobileUploadText}>Click to upload here</span>
                 <input
@@ -133,8 +146,9 @@ function MultiFileInput({ accept = "image/*"}) {
                     onChange={handleFileChange}
                 ></input>
             </div>
-
-            <Button onClick={handleUploadClick} type="danger">Upload ⬆</Button>
+            <div className={styles.buttonContainer}>
+                <Button onClick={handleUploadClick} type="danger">Upload ⬆</Button>
+            </div>   
         </div>
     )
 }
