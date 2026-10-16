@@ -13,21 +13,41 @@ const MAX_CHAR_COUNT_RESPONSIVE = 12;
 function MultiFileInput({ accept = "image/*"}) {
     const [fileList, setFileList] = useState([]);
     let fileCountRef = useRef(0);
-    const fileInputRef = useRef();
-
+    const inputRef = useRef(null); // used for relating the <div> click event to the hidden <input> element
+    const [ dropZoneDragover, setDropZoneDragover] = useState(false);
 
     useEffect(() => {
         console.log("fileList:", fileList);
         console.log("fileCountRef:", fileCountRef);
-    },[fileList]);
+        console.log("dropZoneDragover:", dropZoneDragover);
+    },[fileList, dropZoneDragover]);
+
+    // Formats file name text when a file is added to the fileList array
+    // for display purposes
+    function truncateString(str, maxLength) {
+        if (str.length > maxLength) {
+            return str.substring(0, maxLength) + '…';
+        } else { 
+            return str; 
+        }
+
+    }
 
     // Get new files just added (if present) and add to the current files
     // after array conversion from FileList
     function handleFileChange(e) {
         const newFilesArray = Array.from(e.target.files);
+        let tempArray = [];
+        let filesRemaining = 0;
+
+        filesRemaining = MAX_FILECOUNT - fileCountRef.current;
         
-        fileCountRef.current += newFilesArray.length;
-        setFileList((currentFileList) => [...currentFileList, ...newFilesArray]);
+        if (filesRemaining === 0) return;
+        tempArray = newFilesArray.slice(0, filesRemaining);
+
+        // fileCountRef.current += newFilesArray.length;
+
+        setFileList((currentFileList) => [...currentFileList, ...tempArray]);
     }
 
     function handleDelete(e, index) {
@@ -46,27 +66,39 @@ function MultiFileInput({ accept = "image/*"}) {
         e.preventDefault();
         console.log("onDragOver");
     }
+    
+    function handleDragStart(e) {
+        e.preventDefault();
+        console.log("onDragStart");
+        setDropZoneDragover((val) => val = true);
+    }
+
+    function handleDragLeave(e) {
+        e.preventDefault();
+        setDropZoneDragover((val) => val = false);
+        console.log("onDragLeave");
+    }
 
     function handleFileDrop(e) {
         e.preventDefault();
 
-        // if(e.dataTransfer.files && e.dataTransfer.files[0]) {
-        //     const file = e.dataTransfer.files[0];
-        //     // setImageFile(file);
-        // }
         const newFilesArray = Array.from(e.dataTransfer.files);
+
         // Return if the file queue count doesn't have enought remaning file count "slots"
         if(MAX_FILECOUNT - fileCountRef.current < newFilesArray.length) {
             console.log("** Not enough file slots remaining**");
             return;
         }
+
         // Update current file # count and the file list array
         fileCountRef.current += newFilesArray.length;
         setFileList((currentFileList) => [...currentFileList, ...newFilesArray]);        
     }
 
+    // Handles a click on the div, "redirecting" it by activating an event
+    // on the <input> element to trigger file picker activity
     function handleDropzoneClick() {
-        fileInputRef.current?.click();
+        inputRef.current?.click();
     }
 
 
@@ -77,12 +109,6 @@ function MultiFileInput({ accept = "image/*"}) {
         return dataTransfer.files;  // Returns a FileList
     }
 
-    function truncateString(str, maxLength) {
-        if (str.length > maxLength) {
-            return str.substring(0, maxLength) + '…';
-        }
-        return str;
-    }
 
     // Handles the Upload button activity
     function handleUploadClick() {
@@ -107,7 +133,6 @@ function MultiFileInput({ accept = "image/*"}) {
             .catch((err) => console.error(err));        
     }
 
-
     return (
         <div className={styles.container}>
             <h3>{fileCountRef.current} of {MAX_FILECOUNT} uploaded</h3>
@@ -128,18 +153,22 @@ function MultiFileInput({ accept = "image/*"}) {
                 }
             </ul>
             {/* <input id="input-file" multiple type="file" onChange={handleFileChange}></input> */}
-            <div
-                className={styles.dropZone}
+            <h3>dropZoneDragover: {dropZoneDragover ? "true" : "false"}</h3>
+            <div 
+                className={`${styles.dropZone} ${dropZoneDragover ? styles.dragOver : styles.dropZoneDefault }`}
                 onDragOver={handleDragOver}
+                onDrag={handleDragStart}
+                onDragLeave={handleDragLeave}
                 onDrop={handleFileDrop}
                 onClick={handleDropzoneClick}
+                draggable="true"
             >
                 <span className={styles.desktopUploadText}>
                     Drag & drop here or click to upload
                 </span>
                 <span className={styles.mobileUploadText}>Click to upload here</span>
                 <input
-                    ref={fileInputRef}  
+                    ref={inputRef}  // Acts as the teh 'target' for the drop zone <div> click
                     type="file"
                     accept={accept}
                     style={{ display: "none"}}

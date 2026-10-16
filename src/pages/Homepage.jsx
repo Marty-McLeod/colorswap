@@ -2,7 +2,7 @@ import shared from "./sharedPageStyles.module.css";
 import styles from "./Homepage.module.css";
 import PageNav from "../components/PageNav";
 import Footer from "../components/Footer";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import OptionCheckboxes from "../components/OptionCheckboxes";
 import jsonOptions from "../data/options_array.json" with { type: "json"};
 import Button from "../components/Button";
@@ -10,9 +10,11 @@ import Toggle from "../components/Toggle";
 import MultiFileInput from "../components/MultiFileInput";
 
 
-export const FILETYPES = ".txt, .css, .sass, .md, .rb, .py, .js, .jsx, .c, .cpp, .erb, .html";
+const FILE_EXTNS = ["txt", "css", "sass", "md", "rb", "py", "js", "jsx", "c", "cpp", "erb", "html"];
+const FILE_EXT_STR = "txt, .css, .sass, .md, .rb, .py, .js, .jsx, .c, .cpp, .erb, .html";
 
 function Homepage() {
+    const fileExtStringRef = useRef(null);
     const optionsArray = jsonOptions["options"];
     const labelsArray = jsonOptions["optionLabels"];
     const newOptionsArray = structuredClone(optionsArray);
@@ -20,8 +22,26 @@ function Homepage() {
     const [optValues, setOptValues] = useState(newOptionsArray);
     const [exToggle, setExToggle] = useState(false);
 
+    /*  Do a one-time init. of the ref constant to avoid multiple calls to
+        the string building function */
+        if(fileExtStringRef.current === null) {
+            fileExtStringRef.current = buildFileExtString();
+        }
+
+    function buildFileExtString() {
+        let extString = "";
+        extString = FILE_EXTNS.map((ext, index) => {
+            return index < (FILE_EXTNS.length-1) ? '.' + ext + ", "  : '.' + ext
+        }).join('')
+
+        console.log("extString:", extString);
+        return extString;
+    }
+
+
     useEffect(() => {
     // console.log("optValues:", optValues);
+
   }, [optValues]);
 
     function handleToggle() {
@@ -108,10 +128,10 @@ function Homepage() {
                     <div className={styles.headerFileNotes}>
                         <h3>Acceptable text-based file types:</h3>
                         <p className={styles.fileNotes}>
-                            { FILETYPES }
+                            { fileExtStringRef.current}
                         </p>
                     </div>
-                    <MultiFileInput accept={FILETYPES}/>
+                    <MultiFileInput accept={ fileExtStringRef.current }/>
                     {/* <FileInput /> */}                 
                 </section>
             </div>
