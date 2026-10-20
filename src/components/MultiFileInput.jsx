@@ -3,14 +3,16 @@ import Button from "./Button";
 import styles from "./MultiFileInput.module.css";
 import { HiOutlineFolder } from "react-icons/hi";
 import DeleteIcon from "./DeleteIcon";
-
+import { apiMultipartRequest } from "../services/apiMultipartRequest";
+import { URL_HTTPBIN, URL_JSONPLACEHOLDER } from "../data/urls";
+import { getApiData } from "../services/getApiData";
 
 const MAX_FILECOUNT = 5;
 const MAX_CHAR_COUNT = 44;
 const MAX_CHAR_COUNT_RESPONSIVE = 12;
 
 
-function MultiFileInput({ accept = "image/*"}) {
+function MultiFileInput({ accept = "image/*", jsonData}) {
     const [fileList, setFileList] = useState([]);
     let fileCountRef = useRef(0);
     const inputRef = useRef(null); // used for relating the <div> click event to the hidden <input> element
@@ -106,16 +108,6 @@ function MultiFileInput({ accept = "image/*"}) {
         return dataTransfer.files;  // Returns a FileList
     }
 
-
-    /* =================================== */
-    const bodyOptions = {
-        method: "POST",
-        body: JSON.stringify()
-    }
-
-
-    /* =================================== */
-
     // Handles the Upload button activity
     function handleUploadClick() {
         if(!fileList) return;
@@ -130,13 +122,24 @@ function MultiFileInput({ accept = "image/*"}) {
         Array.from(filesAsFileList).forEach((file) => formData.append("files", file));
 
         // Upload to the server via fetch API
-        fetch(URL_HTTPBIN, {
-            method: "POST",
-            body: formData,
-        })
-            .then((res) => res.json())
-            .then((data) => console.log(data))
-            .catch((err) => console.error(err));        
+        // const { isLoading, data, error } = apiMultipartRequest(URL_HTTPBIN, jsonData, formData);
+        const { isLoading, data, error } = getApiData(5, URL_JSONPLACEHOLDER);
+
+        if(!isLoading) {
+            console.log(data);
+        }
+
+        if(error) {
+            console.log("Error:", error.message);
+        }
+
+        // fetch(URL_HTTPBIN, {
+        //     method: "POST",
+        //     body: formData,
+        // })
+        //     .then((res) => res.json())
+        //     .then((data) => console.log(data))
+        //     .catch((err) => console.error(err));        
     }
 
     return (

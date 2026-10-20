@@ -34,7 +34,7 @@ function Homepage() {
             return index < (FILE_EXTNS.length-1) ? '.' + ext + ", "  : '.' + ext
         }).join('')
 
-        console.log("extString:", extString);
+        // console.log("extString:", extString);
         return extString;
     }
 
@@ -131,7 +131,10 @@ function Homepage() {
                             { fileExtStringRef.current}
                         </p>
                     </div>
-                    <MultiFileInput accept={ fileExtStringRef.current }/>
+                    <MultiFileInput 
+                        accept={ fileExtStringRef.current }
+                        jsonData={optValues}
+                    />
                     {/* <FileInput /> */}                 
                 </section>
             </div>

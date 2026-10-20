@@ -1,4 +1,4 @@
-import { getApiData } from "../services/apiTestData";
+import { getApiData } from "../services/getApiData.js";
 import shared from "./sharedPageStyles.module.css";
 import styles from "./Test.module.css";
 import PageNav from "../components/PageNav";
