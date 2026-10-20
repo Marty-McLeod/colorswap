@@ -65,14 +65,10 @@ function MultiFileInput({ accept = "image/*"}) {
     function handleDragOver(e) {
         e.preventDefault();
         console.log("onDragOver");
+        
+        if(!dropZoneDragover) setDropZoneDragover((val) => val = true);
     }
     
-    function handleDragStart(e) {
-        e.preventDefault();
-        console.log("onDragStart");
-        setDropZoneDragover((val) => val = true);
-    }
-
     function handleDragLeave(e) {
         e.preventDefault();
         setDropZoneDragover((val) => val = false);
@@ -98,6 +94,7 @@ function MultiFileInput({ accept = "image/*"}) {
     // Handles a click on the div, "redirecting" it by activating an event
     // on the <input> element to trigger file picker activity
     function handleDropzoneClick() {
+        console.log("DrZoneClick");
         inputRef.current?.click();
     }
 
@@ -157,7 +154,7 @@ function MultiFileInput({ accept = "image/*"}) {
             <div 
                 className={`${styles.dropZone} ${dropZoneDragover ? styles.dragOver : styles.dropZoneDefault }`}
                 onDragOver={handleDragOver}
-                onDrag={handleDragStart}
+                // onDragEnter={handleDragStart}
                 onDragLeave={handleDragLeave}
                 onDrop={handleFileDrop}
                 onClick={handleDropzoneClick}

@@ -96,23 +96,31 @@
   max-width: 100%;
   min-height: 10rem;
   /* max-height: auto; */
+
+  /* Default (base) styling before a dragOver or :hover */
+  border: 2px dashed var(--color-5);
+  font-size: 2.25rem;
+  border-radius: 0.375rem;  
 }
 
 .dropZoneDefault {
-  border: 2px dashed var(--color-5);
+  /* border: 2px dashed var(--color-5); */
   color: var(--color-5);
-  font-size: 2.25rem;
-  border-radius: 0.375rem;
+  /* font-size: 2.25rem;
+  border-radius: 0.375rem; */
 }
 
-.dropZoneDefault:hover {
-    color: var(--color-8);
-    border: 2px dashed var(--color-8);    
-    background-color: color-mix(in srgb, var(--color-7), transparent 80%);
-    box-shadow: 0 0 1.5rem color-mix(in srgb, var(--color-7), transparent 50%);
+@media (min-width: 769px) {
+
+    .dropZoneDefault:hover, .dragOver {
+        color: var(--color-8);
+        border: 2px dashed var(--color-8);    
+        background-color: color-mix(in srgb, var(--color-7), transparent 80%);
+        box-shadow: 0 0 1.5rem color-mix(in srgb, var(--color-7), transparent 50%);
+    }
 }
 
-.dragOver {
+/* .dragOver {
     border: 2px dashed var(--color-8); 
     color: var(--color-8);
     font-size: 2.25rem;
@@ -120,7 +128,7 @@
 
     background-color: color-mix(in srgb, var(--color-5), transparent 80%);
     border-color: green;
-}
+} */
 
 .desktopUploadText {
   display: inline-block;
@@ -175,4 +183,5 @@
     .fileNameMobile {
         display: inline-block;
     }    
+ 
 }
