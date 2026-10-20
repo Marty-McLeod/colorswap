@@ -4,7 +4,7 @@ import styles from "./MultiFileInput.module.css";
 import { HiOutlineFolder } from "react-icons/hi";
 import DeleteIcon from "./DeleteIcon";
 
-const URL_HTTPBIN = "https://httpbin.org/post";
+
 const MAX_FILECOUNT = 5;
 const MAX_CHAR_COUNT = 44;
 const MAX_CHAR_COUNT_RESPONSIVE = 12;
@@ -17,9 +17,9 @@ function MultiFileInput({ accept = "image/*"}) {
     const [ dropZoneDragover, setDropZoneDragover] = useState(false);
 
     useEffect(() => {
-        console.log("fileList:", fileList);
-        console.log("fileCountRef:", fileCountRef);
-        console.log("dropZoneDragover:", dropZoneDragover);
+        // console.log("fileList:", fileList);
+        // console.log("fileCountRef:", fileCountRef);
+        // console.log("dropZoneDragover:", dropZoneDragover);
     },[fileList, dropZoneDragover]);
 
     // Formats file name text when a file is added to the fileList array
@@ -55,7 +55,7 @@ function MultiFileInput({ accept = "image/*"}) {
             if(i != index) return file;
         })
 
-        console.log("index:", index);
+        // console.log("index:", index);
 
         fileCountRef.current = newFilesArray.length;
 
@@ -64,7 +64,7 @@ function MultiFileInput({ accept = "image/*"}) {
 
     function handleDragOver(e) {
         e.preventDefault();
-        console.log("onDragOver");
+        // console.log("onDragOver");
         
         if(!dropZoneDragover) setDropZoneDragover((val) => val = true);
     }
@@ -72,7 +72,7 @@ function MultiFileInput({ accept = "image/*"}) {
     function handleDragLeave(e) {
         e.preventDefault();
         setDropZoneDragover((val) => val = false);
-        console.log("onDragLeave");
+        // console.log("onDragLeave");
     }
 
     function handleFileDrop(e) {
@@ -94,7 +94,7 @@ function MultiFileInput({ accept = "image/*"}) {
     // Handles a click on the div, "redirecting" it by activating an event
     // on the <input> element to trigger file picker activity
     function handleDropzoneClick() {
-        console.log("DrZoneClick");
+        // console.log("DrZoneClick");
         inputRef.current?.click();
     }
 
@@ -106,6 +106,15 @@ function MultiFileInput({ accept = "image/*"}) {
         return dataTransfer.files;  // Returns a FileList
     }
 
+
+    /* =================================== */
+    const bodyOptions = {
+        method: "POST",
+        body: JSON.stringify()
+    }
+
+
+    /* =================================== */
 
     // Handles the Upload button activity
     function handleUploadClick() {
@@ -149,8 +158,6 @@ function MultiFileInput({ accept = "image/*"}) {
                     ))
                 }
             </ul>
-            {/* <input id="input-file" multiple type="file" onChange={handleFileChange}></input> */}
-            <h3>dropZoneDragover: {dropZoneDragover ? "true" : "false"}</h3>
             <div 
                 className={`${styles.dropZone} ${dropZoneDragover ? styles.dragOver : styles.dropZoneDefault }`}
                 onDragOver={handleDragOver}

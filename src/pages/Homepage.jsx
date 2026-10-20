@@ -11,7 +11,7 @@ import MultiFileInput from "../components/MultiFileInput";
 
 
 const FILE_EXTNS = ["txt", "css", "sass", "md", "rb", "py", "js", "jsx", "c", "cpp", "erb", "html"];
-const FILE_EXT_STR = "txt, .css, .sass, .md, .rb, .py, .js, .jsx, .c, .cpp, .erb, .html";
+// const FILE_EXT_STR = "txt, .css, .sass, .md, .rb, .py, .js, .jsx, .c, .cpp, .erb, .html";
 
 function Homepage() {
     const fileExtStringRef = useRef(null);
