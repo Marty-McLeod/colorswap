@@ -1,34 +1,163 @@
-.nav {
+
+.navbar {
+
   display: flex;
-  align-items: center;
+  flex-direction: row;
+
   justify-content: space-between;
-}
-
-.nav ul {
-  list-style: none;
-  display: flex;
   align-items: center;
-  gap: 4rem;
+
+  background-color: var(--color-3);
+  padding: 0 2em;
+  border-bottom: 1px solid var(--color-4);
+  height: 3.6rem;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    /* Removes leading spacing for the ul/li list */
+    padding-inline-start: 0;
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
+
+    gap: 1rem;
+
+    li a {
+      display: flex;
+      justify-content: center;
+      min-width: 60px;
+      padding-left: 1rem;
+      padding-right: 1rem;      
+    }
+    
+    li a:link, a:visited {
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--color-8);
+    }
+
+    li a:hover {
+      background-color: var(--color-7);
+      color: var(--color-4);
+    }
+
+    li {
+      border-bottom: none;
+    }
+  }
+  /*  NOTE: the menu icon will invert colors automaticaly based on the color theme
+      uses and inverted color list for each theme. I.e., light mode: color var. = dark icon,
+      dark mode: color var. = light icon color.
+      Use of the isDarkMode state & additional CSS classes aren't needed in this case.
+  */
+  .menuIcon, .menuIconUnused {
+      display: none;
+      font-size: 2rem;  
+  }
+  
+  /* .menuIconLight {
+    color: var(--color-7);
+  }
+
+  .menuIconDark {
+    color: var(--color-9);
+  } */
+
+  #menuGroup {
+    display: flex;
+    align-items: center;
+
+      span svg {
+        font-size: 2rem;
+        display: flex;
+        color: var(--color-7);
+    }
+  }
+  
+
+  
 }
 
-.nav a:link,
-.nav a:visited {
-  text-decoration: none;
-  color: var(--color-light--2);
-  text-transform: uppercase;
-  font-size: 1.5rem;
-  font-weight: 600;
-}
 
-/* CSS Modules feature */
-.nav a:global(.active) {
-  color: var(--color-brand--2);
-}
+/* Mobile classes: Adds a left & right bar icon (right icon is
+  invisible/inactive) and justify-content with space-between.
 
-a.ctaLink:link,
-a.ctaLink:visited {
-  background-color: var(--color-brand--2);
-  color: var(--color-dark--0);
-  padding: 0.8rem 2rem;
-  border-radius: 7px;
+  Positions the <ul> navigation link list relative to the navbar
+  container, immediately at the bottom edge.
+*/
+@media (max-width: 768px) {
+  .navbar {
+    position: relative;
+    padding: 0.6rem;
+    height: auto;
+    
+    ul {
+      position: absolute;
+      /* Places top of <ul> at 100% of the parent element, a.k.a,
+        at the exact bottom edge.
+      */
+      top: 100%;
+      left: 0;
+
+      /* IMPORTANT! 'user agent stylesheet' adds top/bottom
+        margins which affect relative placement. (These are
+        "margin-block-start & -end", with 1em in my dev.
+        example.
+      */
+      margin-top: 0;
+      margin-bottom: 0;
+
+      padding: 0 0;
+      gap: 0;
+      width: 40%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: left;
+      border: 1px solid var(--color-7);
+      background-color: var(--color-6);
+
+
+      li {
+        display: flex;
+        justify-content: left;       
+        width: stretch;
+        padding: 0.6rem 0;     
+      }
+
+      li:not(:nth-last-child(1)) {
+          border-bottom: 1px solid var(--color-4);
+      }      
+
+      li a:link, a:visited {
+        min-width: 0;
+        font-size: 0.8rem;
+        color: var(--color-3);
+      }
+
+    }
+
+    .menuIcon {
+      display: block;
+      color: var(--color-9);
+    }
+
+    .menuIconUnused { 
+      display: block;
+      visibility: hidden;
+    }
+
+    /*  Hides the menu based on isOpen state value
+        Note: needs to be located inside <nav> else, the
+        higher selector will prevent it from being applied.
+    */
+    .hideMenu {
+      display: none;
+    }
+
+  }
+
+
 }

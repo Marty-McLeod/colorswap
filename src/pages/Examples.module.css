@@ -1,9 +1,17 @@
-.examples {
-  font-family: "Segoe UI";
+/* For sections of content with <section> */
+.examples section {
+    background-color: var(--color-1);
+    color: var(--color-9);
+    min-height: 75vh;    
+} 
 
+.examples section > h1 {
+  display: flex;
+  align-items: center;
+  font-size: 3rem;
 }
 
-.examples h2 {
-    color: blue;
 
-}
+/* @media (max-width: 768px) {
+
+} */
