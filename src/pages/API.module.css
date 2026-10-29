@@ -2,7 +2,9 @@
 .api section {
     background-color: var(--color-1);
     color: var(--color-9);
-    min-height: 75vh;
+    min-height: 25vh;
+
+    justify-content: start;
 } 
 
 .api section > h1 {
@@ -11,6 +13,9 @@
   font-size: 3rem;
 }
 
+.emailStatus {
+  color: var(--color-5);
+}
 
 /* @media (max-width: 768px) {
 
