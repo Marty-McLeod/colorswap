@@ -7,6 +7,7 @@ import PageNotFound from "./pages/PageNotFound";
 import API from "./pages/API";
 import Test from "./pages/Test";
 
+
 function App() {
   return (
     <DarkModeProvider>
@@ -16,7 +17,7 @@ function App() {
           <Route path="how-to" element={<HowTo/>} />
           <Route path="examples" element={<Examples/>} />
           <Route path="api" element={<API/>}/>
-          <Route path="test" element={<Test/>}/>
+          <Route path="test" element={<Test/>}/>        
           <Route path="*" element={<PageNotFound/>} />
         </Routes>
       </BrowserRouter>

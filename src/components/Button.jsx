@@ -1,26 +1,31 @@
 import styles from "./sharedButtonStyles.module.css";
 
 function Button({ onClick, children, type="success"}) {
+    let styleVal = "";
     let typeVal = "";
-    
+
     switch(type) {
         case "success":
         default:
-            typeVal = styles.success;
+            styleVal = styles.success;
             break;
         case "primary": 
-            typeVal = styles.primary;
+            styleVal = styles.primary;
             break;
         case "warning": 
-            typeVal = styles.warning;
+            styleVal = styles.warning;
             break;
         case "danger":
-            typeVal = styles.danger;
+            styleVal = styles.danger;
+            break;
+        case "submit":
+            styleVal = styles.submit;
+            typeVal = "submit";
             break;
     }
 
     return (
-        <button className={typeVal} onClick={onClick} >
+        <button type={`${typeVal}`} className={styleVal} onClick={onClick}>
             { children }
         </button>
     )

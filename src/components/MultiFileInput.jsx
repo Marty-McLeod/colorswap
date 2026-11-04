@@ -24,10 +24,10 @@ function MultiFileInput({ accept = "image/*", jsonData}) {
     
 
     useEffect(() => {
-        console.log("fileList:", fileList);
+
         // console.log("fileCountRef:", fileCountRef);
         // console.log("dropZoneDragover:", dropZoneDragover);
-    },[fileList, dropZoneDragover]);
+    },[]);
 
     // Formats file name text when a file is added to the fileList array
     // for display purposes
@@ -123,15 +123,12 @@ function MultiFileInput({ accept = "image/*", jsonData}) {
    async function handleUploadClick() {
        // Don't make send formData & request is the file list is empty
         if(!fileList.length) {
-           console.log("**fileList empty");
            return;
         }
         
         // get the current array of files and convert to a FileList
         const filesAsFileList = getFileList();
         let data = null;
-        
-        console.log("Uploading", fileList);
         
         // Create a new FormData object and append files
         const formData = new FormData();
@@ -151,7 +148,6 @@ function MultiFileInput({ accept = "image/*", jsonData}) {
             // reset the file list
             setData(data);
             setFileList([]);
-            alert("Upload successful");
         }
         catch(err) {
             console.log("Err:", err.message);
@@ -161,10 +157,7 @@ function MultiFileInput({ accept = "image/*", jsonData}) {
         } finally {
             setIsLoading(false);
         }
-        
-        if(data) {
-            console.log("Data:", data);
-        }
+
    }
    
         // =====================================================================
