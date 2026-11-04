@@ -10,21 +10,23 @@ import { FROM_ADDRESS, SITE_NAME, SITE_URL_HTTP } from "../data/colorswap";
 
 function API() {
     const [message, setMessage] = useState("");
-    const DUMMY_KEY = "af5j01khv";
+    const [htmlBody, setHtmlBody] = useState("");
 
-    const email_html = 
-    `<p>Here is your key: ${DUMMY_KEY}</p>` +
-    "<p>Please append it to all your API requests. (Key is not case sensitive)</p>" + 
-    `<p>Example: http://colorswap.site/api/upload/file/&apikey=${DUMMY_KEY}</p>` +
-    `<p>Click the following URL to activate your key: <a href=${SITE_URL_HTTP}/>${SITE_URL_HTTP}</a></p>` +
-    "<p><em><small>If you did not make this request please disregard this email.</small></em></p>";
+    // const DUMMY_KEY = "af5j01khv";
+
+    // const email_html = 
+    // `<p>Here is your key: ${DUMMY_KEY}</p>` +
+    // "<p>Please append it to all your API requests. (Key is not case sensitive)</p>" + 
+    // `<p>Example: http://colorswap.site/api/upload/file/&apikey=${DUMMY_KEY}</p>` +
+    // `<p>Click the following URL to activate your key: <a href=${SITE_URL_HTTP}/>${SITE_URL_HTTP}</a></p>` +
+    // "<p><em><small>If you did not make this request please disregard this email.</small></em></p>";
 
 
     const email_params = {
         from: `${SITE_NAME} <${FROM_ADDRESS}>`,
         to: "",
         subject: "Your API key",
-        html: email_html,
+        html: " ",
         // text: "" // Not required as Resend will derive the text field from html strings
     };
 
@@ -51,16 +53,17 @@ function API() {
         // POST email parameters to api/send endpoint to validate &
         // trigger a send via Resend API service
         try{
-            fetch('/api/send', {
+            fetch('/api/get-apikey', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(email_params)
             })
-                .then(res => res.json())
-                .then(data => setMessage(data.email_status));
-                console.log("Data:", message);
+            .then(res => res.json())
+            .then(data => setMessage(data.email_status))
+
+            console.log("Data:", message);
 
         } catch(err) {
             console.log("Err:", err.message);
