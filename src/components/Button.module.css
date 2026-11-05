@@ -12,7 +12,7 @@ button {
 
 }
 
-.primary {
+.submit, .primary {
     background-color: var(--primary);
 }
 
@@ -26,9 +26,4 @@ button {
 
 .danger {
     background-color: var(--danger);
-}
-
-.submit {
-    color: darkblue;
-    background-color: var(--info);
 }

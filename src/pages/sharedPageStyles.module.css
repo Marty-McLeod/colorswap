@@ -17,11 +17,15 @@ div .sharedPage {
 
 }
 
+p {
+    margin: 0.5rem 0;
+}
+
 /* Horizontal line styling */
 hr {
     border: none;           /* Remove default border */
     width: 90%;             /* Control line width */
-    margin: 0.6rem auto;      /* Center the line with vertical spacing */
+    margin: 0.3rem auto;      /* Center the line with vertical spacing */
 }
 
 hr.basic {
@@ -60,7 +64,7 @@ hr.dashed {
     display: flex;
     flex-direction: column;
   
-    padding: 1rem;
+    padding: 0.3rem 1rem;
     align-items: center;
     justify-content: center;
 

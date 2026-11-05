@@ -1,4 +1,4 @@
-import styles from "./sharedButtonStyles.module.css";
+import styles from "./Button.module.css";
 
 function Button({ onClick, children, type="success"}) {
     let styleVal = "";

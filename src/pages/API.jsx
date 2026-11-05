@@ -6,11 +6,12 @@ import KeyEmailForm from "../components/KeyEmailForm";
 import { useState, useEffect } from "react";
 import { validateEmail } from "../utilities/validate_email";
 import { FROM_ADDRESS, SITE_NAME, SITE_URL_HTTP } from "../data/colorswap";
+import { HiInformationCircle } from "react-icons/hi";
 
 
 function API() {
     const [message, setMessage] = useState("");
-    const [htmlBody, setHtmlBody] = useState("");
+    const [error, setError] = useState("");
 
     // const DUMMY_KEY = "af5j01khv";
 
@@ -49,7 +50,7 @@ function API() {
             return;
         }
         // Set user email address for sending to:
-        email_params.to = email;
+        // email_params.to = email;
         // POST email parameters to api/send endpoint to validate &
         // trigger a send via Resend API service
         try{
@@ -58,15 +59,14 @@ function API() {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(email_params)
+                body: JSON.stringify({ email: email})
             })
             .then(res => res.json())
             .then(data => setMessage(data.email_status))
 
-            console.log("Data:", message);
-
         } catch(err) {
             console.log("Err:", err.message);
+            setError(err.message);
         }
         // Clear the input field
         e.target.email.value = "";
@@ -83,7 +83,7 @@ function API() {
                     {/* <div style={{backgroundColor:`${div_color}`, width: "100%", padding: "1rem"}}>
                         /api/message: {message ? message : "NO DATA"}
                     </div> */}
-                    <h2>You'll need to get an API key to use the ColorSwap API. 🗝️😊</h2>
+                    <h2>You'll need to get an API key to use the ColorSwap API. 🗝️</h2>
                     <p>
                         <em>(This is a basic security measure to prevent abuse from bots & other devious characters.)</em>
                     </p>
@@ -92,11 +92,16 @@ function API() {
                         labelText="Email address:"
                         onSubmit={handleSubmit}
                     />
-                    {
-                        message && (<h3 className={styles.emailStatus}>
-                            *{ message }*
-                        </h3>)
+                    {   /* Display a message box to verify email status/show error(s) */
+                        message && (
+                        <div className={styles.emailStatus}>
+                            <HiInformationCircle/> { message }
+                        </div>)
                     }
+                    <p className={styles.tipText}>
+                        <strong>Tip: </strong>Lost your API key? Submit your email address again to receive an email w/ a new
+                        key. 
+                    </p>
                     <hr className={shared.basic}/>
                 </section>
                 <section>
