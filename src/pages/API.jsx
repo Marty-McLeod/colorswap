@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { validateEmail } from "../utilities/validate_email";
 import { FROM_ADDRESS, SITE_NAME, SITE_URL_HTTP } from "../data/colorswap";
 import { HiInformationCircle } from "react-icons/hi";
+import { NavLink } from "react-router";
 
 
 function API() {
@@ -83,6 +84,11 @@ function API() {
                     {/* <div style={{backgroundColor:`${div_color}`, width: "100%", padding: "1rem"}}>
                         /api/message: {message ? message : "NO DATA"}
                     </div> */}
+                    <p className={styles.parLeftAligned}>
+                        Interested in batch processing files to change color code formats yourself? Use the ColorSwap
+                        API to send & received your own processed files. (Basic code operations are explained on the&nbsp; 
+                        <NavLink to={`/how-to`} >How to</NavLink> page.)
+                    </p>
                     <h2>You'll need to get an API key to use the ColorSwap API. 🗝️</h2>
                     <p>
                         <em>(This is a basic security measure to prevent abuse from bots & other devious characters.)</em>
@@ -99,8 +105,7 @@ function API() {
                         </div>)
                     }
                     <p className={styles.tipText}>
-                        <strong>Tip: </strong>Lost your API key? Submit your email address again to receive an email w/ a new
-                        key. 
+                        <strong>Tip: </strong>Lost your API key? Submit your email address again to receive a new key.
                     </p>
                     <hr className={shared.basic}/>
                 </section>

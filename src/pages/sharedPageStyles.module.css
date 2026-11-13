@@ -25,7 +25,7 @@ p {
 hr {
     border: none;           /* Remove default border */
     width: 90%;             /* Control line width */
-    margin: 0.3rem auto;      /* Center the line with vertical spacing */
+    margin: 0.5rem auto;      /* Center the line with vertical spacing */
 }
 
 hr.basic {
@@ -36,7 +36,22 @@ hr.dashed {
   border-top: 2px dashed var(--color-3); /* Set line thickness and color */
 }
 
+/* Corrects the default medum blue link color (hard to see in dark mode) */
+a:link {
+    font-weight: 600;
+    color: var(--blue);
+}
 
+a:visited {
+    color: var(--indigo);
+}
+
+/* Hover & Keyboard Focus state (for accessibility) */
+a:hover,
+a:focus-visible {
+  color: #2975de;
+  text-decoration: underline;
+}
 
 /* Sets font sizes for title <h1>..etc text */
 .sharedPage {

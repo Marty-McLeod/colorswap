@@ -8,7 +8,10 @@ import jsonOptions from "../data/options_array.json" with { type: "json"};
 import Button from "../components/Button";
 import Toggle from "../components/Toggle";
 import MultiFileInput from "../components/MultiFileInput";
-
+import Img from "../components/Img";
+import imageDefault from "../assets/color-code-change-example-image.jpg";
+import imageMobile from "../assets/color-code-change-example-image-mobile.jpg";
+import { MAX_FILECOUNT } from "../data/file-upload-settings.js";
 
 const FILE_EXTNS = ["txt", "css", "sass", "md", "rb", "py", "js", "jsx", "c", "cpp", "erb", "html"];
 // const FILE_EXT_STR = "txt, .css, .sass, .md, .rb, .py, .js, .jsx, .c, .cpp, .erb, .html";
@@ -103,6 +106,16 @@ function Homepage() {
                 <section>
                     <h1>Welcome to ColorSwap!</h1>
                     <h2>ColorSwap makes it easy to change all kinds of color values across files</h2>
+                    <p className={styles.parLeftAligned}>
+                        <em>Why do it by hand when you don't have to?</em> 😊
+                    </p>                    
+                    <Img 
+                        imageDefault={imageDefault}
+                        imageMobile={imageMobile}
+                    />
+                    <p className={styles.parLeftAligned}>
+                        Select at least one color code conversion option then upload 1 to {MAX_FILECOUNT} files below. Toggle "Show examples" to see what each option will produce.
+                    </p>
                     <hr className={shared.basic} />
                         <div className={styles.headerOptions}>
 

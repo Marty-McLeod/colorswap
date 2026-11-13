@@ -6,10 +6,8 @@ import DeleteIcon from "./DeleteIcon";
 import { apiMultipartRequest } from "../services/apiMultipartRequest";
 import { URL_HTTPBIN } from "../data/urls";
 import Loader from "./Loader";
+import { MAX_FILECOUNT, MAX_CHAR_COUNT, MAX_CHAR_COUNT_RESPONSIVE } from "../data/file-upload-settings.js";
 
-const MAX_FILECOUNT = 5;
-const MAX_CHAR_COUNT = 44;
-const MAX_CHAR_COUNT_RESPONSIVE = 12;
 
 
 function MultiFileInput({ accept = "image/*", jsonData}) {
