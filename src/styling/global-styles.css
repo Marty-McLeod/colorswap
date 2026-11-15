@@ -30,6 +30,15 @@
     --gray-900:		#212529;
     --black:		#000;
 
+    /* Additional colors based on standard CSS color names */
+    --aqua: aqua;
+    --aquamarine: aquamarine;
+    --chartreuse: chartreuse;
+    --darkcyan: darkcyan;
+    --darkorange: darkorange;
+    --deepskyblue: deepskyblue;
+    --mediumslateblue: mediumslateblue;
+
 
     --primary:       var(--blue);
     --secondary:     var(--gray-600);

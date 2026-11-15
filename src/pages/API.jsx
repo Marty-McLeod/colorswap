@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import shared from "./sharedPageStyles.module.css";
 import styles from "./API.module.css";
 import KeyEmailForm from "../components/KeyEmailForm";
+import { useDarkMode } from "../context/DarkModeContext";
 import { useState, useEffect } from "react";
 import { validateEmail } from "../utilities/validate_email";
 import { FROM_ADDRESS, SITE_NAME, SITE_URL_HTTP } from "../data/colorswap";
@@ -13,6 +14,10 @@ import { NavLink } from "react-router";
 function API() {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
+    const { isDarkMode } = useDarkMode();
+
+    const classLightDark = isDarkMode ? shared.linkDark : shared.linkLight;
+
 
     // const DUMMY_KEY = "af5j01khv";
 
@@ -87,7 +92,7 @@ function API() {
                     <p className={styles.parLeftAligned}>
                         Interested in batch processing files to change color code formats yourself? Use the ColorSwap
                         API to send & received your own processed files. (Basic code operations are explained on the&nbsp; 
-                        <NavLink to={`/how-to`} >How to</NavLink> page.)
+                        <NavLink className={classLightDark} to={`/how-to`} >How to</NavLink> page.)
                     </p>
                     <h2>You'll need to get an API key to use the ColorSwap API. 🗝️</h2>
                     <p>

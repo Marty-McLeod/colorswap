@@ -16,12 +16,3 @@ function Img( { imageDefault, imageMobile }) {
 }
 
 export default Img;
-
-        // <>
-        //     <div id="imageDefault" className={styles.image}>
-        //         <img src={imageDefault} />
-        //     </div>
-        //     <div id="imageMobile" className={styles.image}>
-        //         <img src={imageMobile} />
-        //     </div>
-        // </>

@@ -37,13 +37,22 @@ hr.dashed {
 }
 
 /* Corrects the default medum blue link color (hard to see in dark mode) */
-a:link {
-    font-weight: 600;
-    color: var(--blue);
+a:link.linkDark {
+    font-weight: 700;
+    color: var(--cyan);
 }
 
-a:visited {
-    color: var(--indigo);
+a:visited.linkDark {
+    color: var(--deepskyblue);
+}
+
+a:link.linkLight {
+    font-weight: 600;
+    color: var(--deepskyblue);
+}
+
+a:visited.linkLight {
+    color: var(--blue);
 }
 
 /* Hover & Keyboard Focus state (for accessibility) */

@@ -1,6 +1,6 @@
 import { FaJugDetergent } from "react-icons/fa6";
 import styles from "./OptionCheckboxes.module.css";
-import { OPTION_EXAMPLE_STRINGS } from "../data/string_array.js";
+import { OPTION_EXAMPLE_STRINGS } from "../data/example_strings.js";
 
 
 const OPT_KEYS_SINGLE = [

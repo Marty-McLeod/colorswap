@@ -6,13 +6,3 @@ export const OPTION_EXAMPLE_STRINGS = {
   "hsv_hex": "hsv(33,100%,100%) → #ff8c00", "hsv_rgb": "hsv(33,100%,100%) → rgb(255,140,0)", "lightdark_hex": "#aabbcc → BBCCDD",
   "lightdark_rgb": "rgb(80,80,80) → rgb(120,120,120)", "colorswap_hex": "#AABBCC → #BBAACC", "colorswap_rgb": "rgb(80,120,140) → rgb(120,80,140)"
 };
-
-
-
-
-// Name	DarkOrange
-// Rgb	rgb(255, 140, 0)
-// Hex	#ff8c00
-// Hsl	hsl(33, 100%, 50%)
-// hsv hsv(33, 100%, 100%)
-// Cmyk	cmyk(0%, 45%, 100%, 0%)

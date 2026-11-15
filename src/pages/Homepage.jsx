@@ -12,6 +12,7 @@ import Img from "../components/Img";
 import imageDefault from "../assets/color-code-change-example-image.jpg";
 import imageMobile from "../assets/color-code-change-example-image-mobile.jpg";
 import { MAX_FILECOUNT } from "../data/file-upload-settings.js";
+import { getArrayObjectFirstKeys } from "../services/array_functions.js";
 
 const FILE_EXTNS = ["txt", "css", "sass", "md", "rb", "py", "js", "jsx", "c", "cpp", "erb", "html"];
 // const FILE_EXT_STR = "txt, .css, .sass, .md, .rb, .py, .js, .jsx, .c, .cpp, .erb, .html";
@@ -23,6 +24,7 @@ function Homepage() {
     const newOptionsArray = structuredClone(optionsArray);
 
     const [optValues, setOptValues] = useState(newOptionsArray);
+    const checkCountRef = useRef(1);
     const [exToggle, setExToggle] = useState(false);
 
     /*  Do a one-time init. of the ref constant to avoid multiple calls to
@@ -47,25 +49,36 @@ function Homepage() {
 
   }, [optValues]);
 
+    /* Handles the "show example" toggle function */
     function handleToggle() {
         // Toggles the current toggle value
         setExToggle((bool) => !bool);
     }
 
-
+    /* Handle checkbox select/deselect activity */
     function handleCheckbox(e, index) {
         const key = e.target.value;
+
         // If the current index was passed, toggle the key's value
         const copy = optValues.map((option, i) => {
             if(i === index) {
+                /* If this is the last option what is checked, simply
+                    return it and do not allow a toggle
+                */
+                if(option[key] & checkCountRef.current === 1) {
+                    return option;
+                }
+                /* Toggle the option checkbox state */
                 option[key] = !option[key];
                 return option;
             } else { return option; }
         })
-
+        /* Update the current checked box count and set the options state */
+        checkCountRef.current = getCheckCount(optValues);
         setOptValues(copy);
     }
 
+    /* Gets & sets value selected in options with a <select> type input */
     function handleSelect(e, index) {
         const { name, value } = e.target;
         const copy = optValues.map((option, i) => {
@@ -78,6 +91,7 @@ function Homepage() {
         setOptValues(copy);
     }
 
+    /* Updates when a numeric value is entered in <input> of type "number" */
     function handleNumber(e, index) {
         const { name, value } = e.target;
         const intValue = parseInt(value);
@@ -92,10 +106,26 @@ function Homepage() {
         setOptValues(copy);
     }
 
+    /* Resets all options to the default state */
     function handleResetDefault() {
         // Resets to default by updating the current
         // options array with default values
         setOptValues([...newOptionsArray]);
+    }
+
+    /* Updates the current count for "true" checkboxes */
+    function getCheckCount(objArray) {
+        let count = 0;
+        /* Creates array of first key in each object (checkbox states) */
+        const keys = getArrayObjectFirstKeys(objArray);
+        // console.log("keys:", keys);
+
+        /* Iterates over current options array states and increments count */
+        objArray.forEach((obj, i) => {
+            obj[keys[i]] === true ? count += 1 : null;
+        })
+
+        return count;
     }
 
 
@@ -105,10 +135,7 @@ function Homepage() {
             <div className={`${styles.homepage} ${shared.sharedPage}`}>
                 <section>
                     <h1>Welcome to ColorSwap!</h1>
-                    <h2>ColorSwap makes it easy to change all kinds of color values across files</h2>
-                    <p className={styles.parLeftAligned}>
-                        <em>Why do it by hand when you don't have to?</em> 😊
-                    </p>                    
+                    <h2>ColorSwap makes it easy to change all kinds of color values across files</h2>                 
                     <Img 
                         imageDefault={imageDefault}
                         imageMobile={imageMobile}
