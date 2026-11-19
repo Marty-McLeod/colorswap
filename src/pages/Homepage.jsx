@@ -13,6 +13,9 @@ import imageDefault from "../assets/color-code-change-example-image.jpg";
 import imageMobile from "../assets/color-code-change-example-image-mobile.jpg";
 import { MAX_FILECOUNT } from "../data/file-upload-settings.js";
 import { getArrayObjectFirstKeys } from "../services/array_functions.js";
+import { useDarkMode } from "../context/DarkModeContext.jsx";
+import { NavLink } from "react-router";
+
 
 const FILE_EXTNS = ["txt", "css", "sass", "md", "rb", "py", "js", "jsx", "c", "cpp", "erb", "html"];
 // const FILE_EXT_STR = "txt, .css, .sass, .md, .rb, .py, .js, .jsx, .c, .cpp, .erb, .html";
@@ -26,6 +29,11 @@ function Homepage() {
     const [optValues, setOptValues] = useState(newOptionsArray);
     const checkCountRef = useRef(1);
     const [exToggle, setExToggle] = useState(false);
+
+    const { isDarkMode } = useDarkMode();
+
+    const classLightDark = isDarkMode ? shared.linkDark : shared.linkLight;
+
 
     /*  Do a one-time init. of the ref constant to avoid multiple calls to
         the string building function */
@@ -141,7 +149,8 @@ function Homepage() {
                         imageMobile={imageMobile}
                     />
                     <p className={styles.parLeftAligned}>
-                        Select at least one color code conversion option then upload 1 to {MAX_FILECOUNT} files below. Toggle "Show examples" to see what each option will produce.
+                        Select at least one color code conversion option then upload 1 to {MAX_FILECOUNT} files below. Toggle "Show examples" to see what each option will produce. (Read more details in the {<NavLink className={classLightDark}
+                        to="/how-to">How to</NavLink>} page.)
                     </p>
                     <hr className={shared.basic} />
                         <div className={styles.headerOptions}>

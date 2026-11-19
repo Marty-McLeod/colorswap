@@ -2,7 +2,9 @@
 .howto section {
     background-color: var(--color-1);
     color: var(--color-9);
-    min-height: 75vh;
+    min-height: 50vh;
+
+    justify-content: start;
 } 
 
 .howto section > h1 {
@@ -11,7 +13,33 @@
   font-size: 3rem;
 }
 
+.howto section > h3 {
+  width: 100%;
+  text-align: start;
+}
 
-/* @media (max-width: 768px) {
- 
-} */
+.howto div#fileTable {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+
+  padding: 1rem 0;  
+}
+
+.howto table#table {
+  border-collapse: collapse;
+
+  th, td {
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--color-4);
+  }
+
+  th {
+    text-align: center;
+    background-color: var(--color-3);
+  }
+
+  td {
+    text-align: left;
+  }
+}
