@@ -7,6 +7,10 @@
     justify-content: start;
 } 
 
+.howto p {
+  width: 100%;
+}
+
 .howto section > h1 {
   display: flex;
   align-items: center;

@@ -8,7 +8,7 @@ import jsonOptions from "../data/options_array.json" with { type: "json"};
 import Button from "../components/Button";
 import Toggle from "../components/Toggle";
 import MultiFileInput from "../components/MultiFileInput";
-import Img from "../components/Img";
+import ImgResp from "../components/ImgResp.jsx";
 import imageDefault from "../assets/color-code-change-example-image.jpg";
 import imageMobile from "../assets/color-code-change-example-image-mobile.jpg";
 import { MAX_FILECOUNT } from "../data/file-upload-settings.js";
@@ -144,7 +144,7 @@ function Homepage() {
                 <section>
                     <h1>Welcome to ColorSwap!</h1>
                     <h2>ColorSwap makes it easy to change all kinds of color values across files</h2>                 
-                    <Img 
+                    <ImgResp
                         imageDefault={imageDefault}
                         imageMobile={imageMobile}
                     />
