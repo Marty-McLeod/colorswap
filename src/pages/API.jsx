@@ -2,6 +2,8 @@ import PageNav from "../components/PageNav";
 import Footer from "../components/Footer";
 import shared from "./sharedPageStyles.module.css";
 import styles from "./API.module.css";
+import "../styling/code.css";
+
 import KeyEmailForm from "../components/KeyEmailForm";
 import { useDarkMode } from "../context/DarkModeContext";
 import { useState, useEffect } from "react";
@@ -9,11 +11,22 @@ import { validateEmail } from "../utilities/validate_email";
 import { FROM_ADDRESS, SITE_NAME, SITE_URL_HTTP } from "../data/colorswap";
 import { HiInformationCircle } from "react-icons/hi";
 import { NavLink } from "react-router";
-
+import { 
+    checkAPIKeyExample, 
+    checkAPIKeyResponse, 
+    testMessageEndpoint, 
+    testMessageTemplate,
+    activateKeyUrl, activateKeyUrlResponse,
+    optionsJSON,
+    optionsTestUrl,
+    optionsTestResponse,
+} from "../data/api_string_templates";
+import Button from "../components/Button";
 
 function API() {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
+    const [showHide, setShowHide] = useState(false);
     const { isDarkMode } = useDarkMode();
 
     const classLightDark = isDarkMode ? shared.linkDark : shared.linkLight;
@@ -41,6 +54,11 @@ function API() {
  
     }, []);
 
+    function handleShowJSON(e) {
+        e.preventDefault();
+
+        setShowHide(!showHide);
+    }
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -89,15 +107,12 @@ function API() {
                     {/* <div style={{backgroundColor:`${div_color}`, width: "100%", padding: "1rem"}}>
                         /api/message: {message ? message : "NO DATA"}
                     </div> */}
-                    <p className={styles.parLeftAligned}>
+                    <p >
                         Interested in batch processing files to change color code formats yourself? Use the ColorSwap
-                        API to send & received your own processed files. (Basic code operations are explained on the&nbsp; 
+                        API to send & received your own processed files. (Basic color code operations are explained on the&nbsp; 
                         <NavLink className={classLightDark} to={`/how-to`} >How to</NavLink> page.)
                     </p>
                     <h2>You'll need to get an API key to use the ColorSwap API. 🗝️</h2>
-                    <p>
-                        <em>(This is a basic security measure to prevent abuse from bots & other devious characters.)</em>
-                    </p>
                     <KeyEmailForm 
                         formTitle="Receive an API key by email" 
                         labelText="Email address:"
@@ -116,9 +131,67 @@ function API() {
                 </section>
                 <section>
                     <h2>How to use the ColorSwap API</h2>
+                    <h3>Verifying you can receive data [GET request]</h3>
                     <p>
-
-                    </p>    
+                        Verify you can receive data from the API endpoint(s) by using this URL (no key required) (GET request):
+                    </p>
+                    <p>
+                        <code>{testMessageEndpoint}</code>
+                    </p>
+                    <p>Response:</p>
+                    <div className={shared.alignLeft}>
+                        <pre>
+                            <code>
+                                {testMessageTemplate}
+                            </code>
+                        </pre>
+                    </div>                    
+                    <h3>Verifying an API key [GET request]</h3>
+                    <p>You can check the validity of an API key using the following endpoint & parameters:</p>
+                    <p><code>{checkAPIKeyExample}</code> with a response similar to this:</p>
+                    <div className={shared.alignLeft}>
+                        <pre><code>{checkAPIKeyResponse}</code></pre>
+                    </div>
+                    <p>( Note that the key is <strong>not</strong> case sensitive.)</p>
+                    <h3>Manually activating an API key (optional) [GET request]</h3>
+                    <p>You should receive a clickable link by email to activate your API key. Optionally, you can do so here as well.</p>
+                    <p><code>{activateKeyUrl}</code></p>
+                    <p>Response:</p>
+                    <div className={shared.alignLeft}>
+                        <pre><code>{activateKeyUrlResponse}</code></pre>
+                    </div>
+                    <hr className={shared.basic}/>
+                    <h3>Sending files & color options to the API</h3>
+                    <p>
+                        In order to process files, send color options and files to be processed in the HTTP message body of a POST request. Send the following:
+                        <ul>
+                            <li>API key as a parameter in the URL path (see above).</li>
+                            <li>(body) JSON format color options: an array containing one or more options.</li>
+                            <li>(body) One or more files, sent as a <code>{`<form>`}</code> attachment.</li>
+                        </ul>
+                        Each option desired should be set to "true" in order to be executed.
+                    </p>
+                    <p><strong>Click the show/hide button to display the full color options JSON format</strong></p>
+                    <Button 
+                        onClick={handleShowJSON}
+                        type={showHide ? "inactive" : "success"}
+                    >
+                            {showHide ? "Hide JSON" : "Show JSON" }
+                    </Button>
+                    { 
+                        showHide && (
+                            <div className={shared.alignLeft}>
+                                <pre><code>{optionsJSON}</code></pre>
+                            </div>
+                        )
+                    }
+                    <h3>Test sending JSON options to the API</h3>
+                    <p>You can validate your options JSON data by sending stringified JSON in the HTTP POST body to the following URL:</p>
+                    <p><code>{optionsTestUrl}</code>  (No API key required)</p>
+                    <p>Response:</p>
+                    <div className={shared.alignLeft}>
+                        <pre><code>{optionsTestResponse}</code></pre>
+                    </div>                    
                 </section>  
             </div>
             <Footer/>

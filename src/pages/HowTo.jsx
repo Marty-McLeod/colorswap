@@ -4,6 +4,8 @@ import PageNav from "../components/PageNav";
 import Footer from "../components/Footer";
 import shared from "./sharedPageStyles.module.css";
 import styles from "./HowTo.module.css";
+import "../styling/code.css";
+
 import ImgResp from "../components/ImgResp";
 import colorOptionsImage from "../assets/option-checkboxes-illustrated.jpg";
 import colorOptionsExampleToggle from "../assets/checkbox-option-view-examples-illustrated.jpg";

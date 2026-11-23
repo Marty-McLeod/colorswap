@@ -18,6 +18,9 @@ function Button({ onClick, children, type="success"}) {
         case "danger":
             styleVal = styles.danger;
             break;
+        case "inactive":
+            styleVal = styles.inactive;
+            break;
         case "submit":
             styleVal = styles.submit;
             typeVal = "submit";

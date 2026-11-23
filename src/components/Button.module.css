@@ -27,3 +27,7 @@ button {
 .danger {
     background-color: var(--danger);
 }
+
+.inactive {
+    background-color: var(--gray-600);
+}
