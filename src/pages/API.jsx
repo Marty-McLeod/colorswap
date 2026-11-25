@@ -11,6 +11,7 @@ import { validateEmail } from "../utilities/validate_email";
 import { FROM_ADDRESS, SITE_NAME, SITE_URL_HTTP } from "../data/colorswap";
 import { HiInformationCircle } from "react-icons/hi";
 import { NavLink } from "react-router";
+import CodeBox from "../components/CodeBox";
 import { 
     checkAPIKeyExample, 
     checkAPIKeyResponse, 
@@ -20,8 +21,12 @@ import {
     optionsJSON,
     optionsTestUrl,
     optionsTestResponse,
+    fileUploadUrl,
+    simpleOptionsExample,
+    codeExample1, codeExample2, codeExample3,
 } from "../data/api_string_templates";
 import Button from "../components/Button";
+import Label from "../components/Label";
 
 function API() {
     const [message, setMessage] = useState("");
@@ -131,7 +136,7 @@ function API() {
                 </section>
                 <section>
                     <h2>How to use the ColorSwap API</h2>
-                    <h3>Verifying you can receive data [GET request]</h3>
+                    <h3>Verifying you can receive data [<Label>GET</Label> request]</h3>
                     <p>
                         Verify you can receive data from the API endpoint(s) by using this URL (no key required) (GET request):
                     </p>
@@ -139,59 +144,59 @@ function API() {
                         <code>{testMessageEndpoint}</code>
                     </p>
                     <p>Response:</p>
-                    <div className={shared.alignLeft}>
-                        <pre>
-                            <code>
-                                {testMessageTemplate}
-                            </code>
-                        </pre>
-                    </div>                    
-                    <h3>Verifying an API key [GET request]</h3>
-                    <p>You can check the validity of an API key using the following endpoint & parameters:</p>
+                    <CodeBox>{testMessageTemplate}</CodeBox>
+                    <h3>Verifying an API key [<Label>GET</Label> request]</h3>
+                    <p>You can check the validity of an API key by passing the 8-character key (case insensitive) here:</p>
                     <p><code>{checkAPIKeyExample}</code> with a response similar to this:</p>
-                    <div className={shared.alignLeft}>
-                        <pre><code>{checkAPIKeyResponse}</code></pre>
-                    </div>
+                    <CodeBox>{checkAPIKeyResponse}</CodeBox>
                     <p>( Note that the key is <strong>not</strong> case sensitive.)</p>
-                    <h3>Manually activating an API key (optional) [GET request]</h3>
+                    <h3>Manually activating an API key (optional) [<Label>GET</Label> request]</h3>
                     <p>You should receive a clickable link by email to activate your API key. Optionally, you can do so here as well.</p>
                     <p><code>{activateKeyUrl}</code></p>
                     <p>Response:</p>
-                    <div className={shared.alignLeft}>
-                        <pre><code>{activateKeyUrlResponse}</code></pre>
-                    </div>
+                    <CodeBox>{activateKeyUrlResponse}</CodeBox>                    
                     <hr className={shared.basic}/>
-                    <h3>Sending files & color options to the API</h3>
+                    <h3>Sending files & color options to the API for color operations</h3>
+                    <p>Use the follow URL for file API operations: <code>{fileUploadUrl}</code></p>
                     <p>
-                        In order to process files, send color options and files to be processed in the HTTP message body of a POST request. Send the following:
-                        <ul>
-                            <li>API key as a parameter in the URL path (see above).</li>
-                            <li>(body) JSON format color options: an array containing one or more options.</li>
-                            <li>(body) One or more files, sent as a <code>{`<form>`}</code> attachment.</li>
-                        </ul>
+                        In order to process files, you'll to do 3 things in a <Label type="danger">POST</Label> request:
+                        <ol>
+                            <li>Pass the API key as a parameter in the URL. I.e., <code>../api/upload/files?apikey=0abcdef1</code></li>
+                            <li> Provide JSON format color options desired (minimum of 1) in the request body.</li>
+                            <li>One or more files, sent as a <code>{`<form>`}</code> attachment.</li>
+                        </ol>
                         Each option desired should be set to "true" in order to be executed.
                     </p>
-                    <p><strong>Click the show/hide button to display the full color options JSON format</strong></p>
+                    <p>A fully populated JSON example is here: <em>(Click to view)</em></p>
                     <Button 
                         onClick={handleShowJSON}
                         type={showHide ? "inactive" : "success"}
                     >
-                            {showHide ? "Hide JSON" : "Show JSON" }
+                            {showHide ? "Hide options JSON" : "Show options JSON" }
                     </Button>
                     { 
                         showHide && (
-                            <div className={shared.alignLeft}>
-                                <pre><code>{optionsJSON}</code></pre>
-                            </div>
+                            <CodeBox>{optionsJSON}</CodeBox>                                    
                         )
                     }
+                    <p>Each color code operation set to "true" will be executed. Unused color functions can be set to "false" or completely removed.</p>
+                    <p>For example, send the following to convert hex color codes to RGB format in one or more attached files:</p>
+                    <CodeBox>{simpleOptionsExample}</CodeBox>                                    
                     <h3>Test sending JSON options to the API</h3>
-                    <p>You can validate your options JSON data by sending stringified JSON in the HTTP POST body to the following URL:</p>
+                    <p>You can validate your options JSON data by sending stringified JSON in the HTTP <Label type="danger">POST</Label> body to the following URL:</p>
                     <p><code>{optionsTestUrl}</code>  (No API key required)</p>
                     <p>Response:</p>
-                    <div className={shared.alignLeft}>
-                        <pre><code>{optionsTestResponse}</code></pre>
-                    </div>                    
+                    <CodeBox>{optionsTestResponse}</CodeBox>
+                    <h3>Code examples for API use</h3>
+                    <h4>Using fetch function with body payload objects</h4>
+                    <p>
+                        You can make an API request with the required JSON options payload and 1+ files containing color codes to be processed using the code example below:
+                    </p>
+                    <CodeBox>{codeExample1}</CodeBox>
+                    <p>Uploading & adding files to an HTTP request body can be done in several ways. Files can be added to a <code>formData()</code> object as an array.</p>
+                    <CodeBox>{codeExample2}</CodeBox>
+                    <p>And finally, you can optionally call the API function with something similar to this:</p>
+                    <CodeBox>{codeExample3}</CodeBox>
                 </section>  
             </div>
             <Footer/>

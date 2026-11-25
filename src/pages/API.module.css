@@ -13,6 +13,11 @@
   font-size: 3rem;
 }
 
+.api section > h3, h4 {
+  width: 100%;
+  text-align: start;
+}
+
 .parLeftAligned {
   text-align: start;
   max-width: 90%;

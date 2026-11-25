@@ -1,0 +1,42 @@
+/* CSS for code snippets & text inline or in a code "box" 
+    to display code-related text clearly and with a differentiating
+    style vs standard HTML text.
+*/
+
+.codeBox {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+
+    pre {
+        background-color: var(--color-2);
+
+        font-size: 0.9em;
+        color: var(--color-9);
+
+        text-align: start;
+        width: fit-content;
+        overflow: hidden;
+
+        border: 1px solid var(--color-4);
+        border-left: 0.3rem solid var(--color-4);
+
+        margin-bottom: 1.6em;
+        /* max-width: 100%; */
+        /* overflow: auto; */
+        padding: 1rem 2rem 1rem 0.8rem;
+        /* box-sizing: content-box; */
+        
+    }
+}
+
+@media (max-width: 768px) {
+.codeBox {
+
+    pre {
+        overflow: scroll;
+        font-size: 0.6rem;        
+    }
+
+}    
+}

@@ -7,7 +7,7 @@ button {
     width: fit-content;
     margin: 0.4rem;
     
-    color: whitesmoke;
+    color: var(--white);
     font-weight: bold;
 
 }
@@ -29,5 +29,6 @@ button {
 }
 
 .inactive {
+    color: var(--gray-400);
     background-color: var(--gray-600);
 }

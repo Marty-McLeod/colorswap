@@ -132,7 +132,7 @@ function MultiFileInput({ accept = "image/*", jsonData}) {
         const formData = new FormData();
         Array.from(filesAsFileList).forEach((file) => {
             formData.append("files", file);
-    });
+        });
         // const formDataArray = Array.from(formData.entries());
 
         // console.log("formData:", formDataArray);

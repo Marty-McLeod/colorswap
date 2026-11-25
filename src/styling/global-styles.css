@@ -111,8 +111,9 @@
 
     /* Fonts & sizing, etc. */
     font-family: "Raleway";
+    font-size: 1.1rem;
     
-    --max-page-div-width: 1440px;
+    --max-page-div-width: 1000px;
 
     /*  Removes the user-agent stylesheet (browser) small margin    
         which creates a gap around a full-width colored navbar. */
