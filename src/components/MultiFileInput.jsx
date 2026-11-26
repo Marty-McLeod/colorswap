@@ -38,15 +38,15 @@ function MultiFileInput({ accept = "image/*", jsonData}) {
 
     }
 
-    // Get new files just added (if present) and add to the current files
-    // after array conversion from FileList
+    // Get new files just added (if present) and add to the current files.
+    // Carried out from either a click or drag-and-drop event.
     function handleFileAdd(e) {
         const newFilesArray = Array.from(e.target.files);
         let tempArray = [];
+        // Check remaining file length; return if no more files can be added
         const filesRemaining = MAX_FILECOUNT - fileCountRef.current;
-        // Return if no fileList capacity is remanining
         if (filesRemaining === 0) return;
-
+        // Get the newly added files and update the current file list (array)
         tempArray = newFilesArray.slice(0, filesRemaining);
         setFileList((currentFileList) => [...currentFileList, ...tempArray]);
     }
@@ -99,7 +99,8 @@ function MultiFileInput({ accept = "image/*", jsonData}) {
 
 
     // Handles a click on the div, "redirecting" it by activating an event
-    // on the <input> element to trigger file picker activity
+    // on the <input> element to trigger file picker activity. This is handled
+    // by handleFileAdd(), the <input> onChange() function
     function handleDropzoneClick() {
         // console.log("DrZoneClick");
         inputRef.current?.click();
@@ -169,6 +170,7 @@ function MultiFileInput({ accept = "image/*", jsonData}) {
             (
             <div className={styles.container}>
                     <h3>{fileCountRef.current} of {MAX_FILECOUNT} uploaded</h3>
+                    { /* Displays file type & name for currently added files in file list*/}
                     <ul>
                         {
                             fileList.map((file, index) => (
@@ -199,7 +201,7 @@ function MultiFileInput({ accept = "image/*", jsonData}) {
                         </span>
                         <span className={styles.mobileUploadText}>Click to upload here</span>
                         <input
-                            ref={inputRef}  // Acts as the teh 'target' for the drop zone <div> click
+                            ref={inputRef}  // Acts as the the 'target' for the drop zone <div> click
                             type="file"
                             accept={accept}
                             style={{ display: "none"}}

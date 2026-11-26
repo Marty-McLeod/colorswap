@@ -24,6 +24,7 @@ import {
     fileUploadUrl,
     simpleOptionsExample,
     codeExample1, codeExample2, codeExample3,
+    codeExampleInput,
 } from "../data/api_string_templates";
 import Button from "../components/Button";
 import Label from "../components/Label";
@@ -190,12 +191,21 @@ function API() {
                     <h3>Code examples for API use</h3>
                     <h4>Using fetch function with body payload objects</h4>
                     <p>
-                        You can make an API request with the required JSON options payload and 1+ files containing color codes to be processed using the code example below:
+                        You can make an API request with the required JSON options payload and 1+ files containing color codes to be processed using the code example below.
+                    </p>
+                    <p>
+                        <em>(Note: Javascript is shown here, with data stored using React JS <code>useState()</code> & <code>useRef()</code> hooks. You can simply replace these with your own standard JS variables as needed.)
+                        </em>
                     </p>
                     <CodeBox>{codeExample1}</CodeBox>
                     <p>Uploading & adding files to an HTTP request body can be done in several ways. Files can be added to a <code>formData()</code> object as an array.</p>
+                    <p>For example, let's assume you have an "Add files" button with an <code>onClick()</code> event handler <code>handleButton()</code></p>
+                    <p>Create a hidden <code>{`<input>`}</code> element which can be used to trigger the operating system's file selection prompt:</p>
+                    <CodeBox>{codeExampleInput}</CodeBox>
+                    <p>Then handle the button click event, which manually triggers the hidden input element's event handler:
+                    </p>
                     <CodeBox>{codeExample2}</CodeBox>
-                    <p>And finally, you can optionally call the API function with something similar to this:</p>
+                    <p>And finally, let's assume you have an "Upload files" button. You can create an API request of type POST containing your API key, color code options (JSON), and the selected files like so:</p>
                     <CodeBox>{codeExample3}</CodeBox>
                 </section>  
             </div>

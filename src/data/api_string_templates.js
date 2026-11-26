@@ -108,8 +108,45 @@ async function apiMultipartRequest(url, apikey, jsonData, formData ) {
 
 };`;
 
+const codeExampleInput = 
+`<input
+  id="hiddenFileInput"  // Acts as the the 'target' for the button click
+  type="file"
+  accept={accept}
+  style={{ display: "none"}}
+  onChange={handleFileAdd}
+></input>`;
+
+
 const codeExample2 = 
-`(TBD)`;
+`/* Click event handlersfor adding files
+  Get new files just added (if present) and add to the current files. 
+  Carried out from either a click or drag-and-drop event. Button click
+  will trigger an OS file selection prompt via the hidden <input> element of
+  type="file".
+*/
+
+// Button click handler
+function handleButton() {
+  // Triggers a click on the hidden file input element
+  document.getElementById("hiddenFileInput").click();
+}
+
+// Handles file picking for the <input> element, triggered from the 
+// button event handler
+function handleFileAdd(e) {
+    // Store selected files in a temp. array
+    const newFilesArray = Array.from(e.target.files);
+    let tempArray = [];
+
+    // Check remaining file length; return if no more files can be added
+    const filesRemaining = MAX_FILECOUNT - fileCountRef.current;
+    if (filesRemaining === 0) return;
+
+    // Get the newly added files and update the current file list (array)
+    tempArray = newFilesArray.slice(0, filesRemaining);
+    setFileList((currentFileList) => [...currentFileList, ...tempArray]);
+}`;
 
 const codeExample3 = 
 `// =====================================================================
@@ -117,6 +154,7 @@ const codeExample3 =
 *   response
 */
 async function handleUploadClick() {
+
   // Ignore an upload click attempt if the file list is empty
   if(!fileList.length) {
       return;
@@ -161,5 +199,5 @@ export {
   optionsTestUrl, optionsTestResponse,
   fileUploadUrl,
   simpleOptionsExample,
-  codeExample1, codeExample2, codeExample3,
+  codeExample1, codeExampleInput, codeExample2, codeExample3,
 };
