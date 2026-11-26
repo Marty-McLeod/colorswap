@@ -65,6 +65,9 @@
   text-align: left;
 }
 
+.parLeftAligned {
+  text-align: start;
+}
 
 
 /* Mobile responsive changes */

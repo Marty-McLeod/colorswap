@@ -1,4 +1,4 @@
-import styles from "./sharedButtonStyles.module.css";
+import styles from "./Button.module.css";
 
 function Button({ onClick, children, type="success"}) {
     let styleVal = "";
@@ -17,6 +17,9 @@ function Button({ onClick, children, type="success"}) {
             break;
         case "danger":
             styleVal = styles.danger;
+            break;
+        case "inactive":
+            styleVal = styles.inactive;
             break;
         case "submit":
             styleVal = styles.submit;

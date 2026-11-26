@@ -1,4 +1,4 @@
-div .parentDiv {
+.parentDiv {
   /* height: calc(100vh - 5rem); */
     /* margin: 2rem 2rem 0 2rem;
     padding: 1rem 5rem; */
@@ -10,18 +10,34 @@ div .parentDiv {
 
 }
 
-div .sharedPage {
+.sharedPage {
     flex: 1;
-    margin: 1.5rem 2.5rem;
+    margin: 1.5rem auto;
     padding: 1rem 5rem 1rem 5rem;
 
+    max-width: var(--max-page-div-width);
+}
+
+.alignLeft {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    
+    overflow:hidden;
+}
+
+/* Paragraph text within <section> are left-aligned by default */
+section p {
+    text-align: left;
+    margin: 0.5rem 0;
+    width: 100%;
 }
 
 /* Horizontal line styling */
 hr {
     border: none;           /* Remove default border */
     width: 90%;             /* Control line width */
-    margin: 0.6rem auto;      /* Center the line with vertical spacing */
+    margin: 0.5rem auto;      /* Center the line with vertical spacing */
 }
 
 hr.basic {
@@ -32,7 +48,31 @@ hr.dashed {
   border-top: 2px dashed var(--color-3); /* Set line thickness and color */
 }
 
+/* Corrects the default medum blue link color (hard to see in dark mode) */
+a:link.linkDark {
+    font-weight: 700;
+    color: var(--cyan);
+}
 
+a:visited.linkDark {
+    color: var(--deepskyblue);
+}
+
+a:link.linkLight {
+    font-weight: 600;
+    color: var(--deepskyblue);
+}
+
+a:visited.linkLight {
+    color: var(--blue);
+}
+
+/* Hover & Keyboard Focus state (for accessibility) */
+a:hover,
+a:focus-visible {
+  color: #2975de;
+  text-decoration: underline;
+}
 
 /* Sets font sizes for title <h1>..etc text */
 .sharedPage {
@@ -60,7 +100,7 @@ hr.dashed {
     display: flex;
     flex-direction: column;
   
-    padding: 1rem;
+    padding: 0.3rem 1rem;
     align-items: center;
     justify-content: center;
 

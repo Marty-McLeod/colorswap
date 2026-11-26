@@ -7,12 +7,12 @@ button {
     width: fit-content;
     margin: 0.4rem;
     
-    color: whitesmoke;
+    color: var(--white);
     font-weight: bold;
 
 }
 
-.primary {
+.submit, .primary {
     background-color: var(--primary);
 }
 
@@ -28,7 +28,7 @@ button {
     background-color: var(--danger);
 }
 
-.submit {
-    color: darkblue;
-    background-color: var(--info);
+.inactive {
+    color: var(--gray-400);
+    background-color: var(--gray-600);
 }

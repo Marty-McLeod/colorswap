@@ -1,0 +1,31 @@
+span {
+
+    border-radius: 0.2em;
+
+    padding: 0.1rem 0.3rem;
+    
+    color: whitesmoke;
+    font-size: 0.8rem;
+    font-weight: bold;
+
+}
+
+.submit, .primary {
+    background-color: var(--primary);
+}
+
+.success {
+    background-color: var(--success);
+}
+
+.warning {
+    background-color: var(--warning);
+}
+
+.danger {
+    background-color: var(--danger);
+}
+
+.inactive {
+    background-color: var(--gray-600);
+}

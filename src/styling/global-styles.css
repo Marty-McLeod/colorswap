@@ -30,6 +30,15 @@
     --gray-900:		#212529;
     --black:		#000;
 
+    /* Additional colors based on standard CSS color names */
+    --aqua: aqua;
+    --aquamarine: aquamarine;
+    --chartreuse: chartreuse;
+    --darkcyan: darkcyan;
+    --darkorange: darkorange;
+    --deepskyblue: deepskyblue;
+    --mediumslateblue: mediumslateblue;
+
 
     --primary:       var(--blue);
     --secondary:     var(--gray-600);
@@ -102,7 +111,10 @@
 
     /* Fonts & sizing, etc. */
     font-family: "Raleway";
+    font-size: 1.1rem;
     
+    --max-page-div-width: 1000px;
+
     /*  Removes the user-agent stylesheet (browser) small margin    
         which creates a gap around a full-width colored navbar. */
     html, body {

@@ -1,0 +1,32 @@
+/*  Displays the default image on larger screens and disables the mobile
+    image; on small screens, the inverse is true.
+
+    Images are sized to fit within the full width of the parent container
+    and height is scaled automatically in proportion.
+*/
+
+.imageDefault, .imageMobile {
+    max-width: 100%;
+    height: auto;
+}
+
+.imageMobile {
+    display: none;
+}
+
+.imageDefault {
+    display: block;
+}
+
+
+
+@media (max-width: 768px) {
+
+    .imageMobile {
+        display: block;
+    }
+
+    .imageDefault {
+        display: none;
+    }
+}
